@@ -1,0 +1,522 @@
+[
+  {
+    "rule": "Pravidlo 63.2",
+    "category": "Zdržování hry",
+    "question": "Brankář úmyslně posune brankovou konstrukci ze své původní pozice během probíhajícího soupeřova útočného tlaku. Jaké rozhodnutí musí rozhodčí učinit?",
+    "options": [
+      "Uložit menší trest (2 min) pro brankáře za Zdržování hry.",
+      "Hru okamžitě přerušit a pouze vykázat vhazování do středního pásma.",
+      "Uložit trestné střílení ve prospěch neprovinivšího se týmu.",
+      "Uložit větší trest (5 min) + trest do konce utkání."
+    ],
+    "correctIndex": 0,
+    "explanation": "Podle IIHF Pravidla 63.2 se brankáři, který úmyslně posune branku ze své pozice, uloží Menší trest (2 min) za zdržování hry."
+  },
+  {
+    "rule": "Situation Book 15.1",
+    "category": "Signalizovaný trest / Gól",
+    "question": "Je signalizován menší trest pro tým A. Tým B odvolá brankáře. Během výhody si hráč týmu B přihraje puk tak nešťastně, že skončí v jeho vlastní prázdné brance. Platí gól a bude trest uložen?",
+    "options": [
+      "Gól neplatí (hra měla být přerušena), trest týmu A se ruší.",
+      "Gól platí, signalizovaný trest týmu A se stále ukládá.",
+      "Gól platí, signalizovaný trest týmu A se anuluje vlivem vstřeleného gólu.",
+      "Gól neplatí, ukládá se pouze trest týmu A."
+    ],
+    "correctIndex": 1,
+    "explanation": "Podle IIHF Situation Book: Pokud si tým výhody vstřelí vlastní gól bez doteku soupeře, gól platí. Signalizovaný trest pro tým A se zrušit nemůže, protože gól nevstřelil tým s výhodou."
+  },
+  {
+    "rule": "Pravidlo 61.1",
+    "category": "Sekání (Slashing)",
+    "question": "Hráč v úniku švihne hokejkou po rukavicích soupeře, ale netrefí ho a nezasáhne ani jeho hokejku. Jak reaguje rozhodčí?",
+    "options": [
+      "Ponechá hru bez trestu, k žádnému zásahu nedošlo.",
+      "Uloží menší trest (2 min) za pokus o sekání.",
+      "Uloží osobní trest 10 minut za nesportovní chování.",
+      "Vykáže hru do středního pásma bez uložení trestu."
+    ],
+    "correctIndex": 1,
+    "explanation": "Podle IIHF Rule Book 61.1 je pokus o sekání trestán stejně jako dokonaný přestupek – ukládá se menší trest (2 min)."
+  },
+  {
+    "rule": "Pravidlo 67.2",
+    "category": "Manipulace s pukem rukou",
+    "question": "Bránící hráč v obranném pásmu sevře puk v dlani, udělá dva kroky a pak jej odhodí směrem k spoluhráči. Jak rozhodnou rozhodčí?",
+    "options": [
+      "Přeruší hru a vhazuje se v obranném pásmu, bez uložení trestu.",
+      "Uloží menší trest (2 min) za zdržování hry / sevření puku rukou.",
+      "Uloží trestné střílení.",
+      "Ponechají hru bez přerušení, pokud nepřihrál rukou do útočného pásma."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pokud hráč sevře puk rukou a drží jej nebo s ním pohybuje (místo okamžitého odehrání nebo pádnutí na led), jedná se o menší trest podle pravidla 67.2."
+  },
+  {
+    "rule": "Situation Book 78.5",
+    "category": "Dosažení branky",
+    "question": "Útočící hráč usměrní puk do branky bruslí tak, že rukou/nohou viditelně kope (kicking motion). Puk se ještě před brankovou čarou dotkne hokejky bránícího hráče a zapadne do sítě. Platí gól?",
+    "options": [
+      "Ano, dotek bránícího hráče ruší úmyslné kopnutí.",
+      "Ne, gól neplatí.",
+      "Platí pouze tehdy, pokud bránící hráč puk úmyslně odehrál.",
+      "Rozhodčí udělí menší trest za nedovolené dosažení branky."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pokud byl puk úmyslně kopnut útočícím hráčem, gól neplatí ani v případě, že se puk po kopnutí odrazí od jakéhokoliv hráče (včetně soupeře) do branky."
+  },
+  {
+    "rule": "Pravidlo 76.4",
+    "category": "Vhazování",
+    "question": "Při vhazování v útočném pásmu týmu A se centrující hráč týmu A dopustí přestupku na vhazování (předčasný pohyb). Kdo je vykázán z bodu pro vhazování?",
+    "options": [
+      "Hráč týmu A je vykázán a nahrazen jiným spoluhráčem na ledě.",
+      "Vhazování se opakuje bez vykázání, pouze s varováním.",
+      "Tým A dostává ihned menší trest za zdržování hry.",
+      "Vhazování se přesouvá do středního pásma."
+    ],
+    "correctIndex": 0,
+    "explanation": "Podle pravidla 76.4 je hráč, který se dopustí prvního přestupku na vhazování, vykázán z bodu pro vhazování a nahrazen spoluhráčem ze sestavy na ledě."
+  },
+  {
+    "rule": "Pravidlo 60.2",
+    "category": "Vysoká hůl",
+    "question": "Hráč zasáhne soupeře do obličeje vysokou holí a způsobí mu krvavé zranění. Jaký trest rozhodčí udělí?",
+    "options": [
+      "Menší trest (2 min).",
+      "Dvojitý menší trest (2+2 min).",
+      "Větší trest (5 min) + automatický trest do konce utkání.",
+      "Osobní trest (10 min)."
+    ],
+    "correctIndex": 1,
+    "explanation": "Za zásah vysokou holí, který způsobí zranění (včetně krvácení), se uplatňuje Dvojitý menší trest (2+2 min) podle IIHF pravidla 60.3."
+  },
+  {
+    "rule": "Situation Book 85.1",
+    "category": "Puk mimo hru",
+    "question": "Puk vyletí z ledové plochy přímo z hokejky bránícího hráče v jeho vlastním obranném pásmu přes ochranné sklo. Puk se předtím nedotkl plexiskla ani jiného hráče. Jaký trest následně padne?",
+    "options": [
+      "Pouze vhazování v obranném pásmu.",
+      "Menší trest (2 min) za zdržování hry.",
+      "Menší trest (2 min) pouze pokud k tomu došlo v posledních 2 minutách.",
+      "Vykázání hry do středního pásma."
+    ],
+    "correctIndex": 1,
+    "explanation": "Vyhození puku přímo z obranného pásma přes plexisklo bez teče je klasický případ uložení menšího trestu (2 min) za zdržování hry podle pravidla 63.2."
+  },
+  {
+    "rule": "Pravidlo 56.2",
+    "category": "Nedovolené bránění (Interference)",
+    "question": "Hráč na střídačce natáhne hokejku na led a zasáhne puk, který je v držení soupeře projíždějícího kolem střídačky. Jak rozhodne rozhodčí?",
+    "options": [
+      "Menší trest pro střídačku (2 min).",
+      "Menší trest (2 min) konkrétnímu hráči z obrané střídačky.",
+      "Trestné střílení (nebo menší trest, pokud k tomu nedošlo v úniku).",
+      "Trest do konce utkání pro daného hráče."
+    ],
+    "correctIndex": 0,
+    "explanation": "Zásah ze střídačky do hry je trestán jako Nedovolené bránění / Zásah ze střídačky – ukládá se menší trest pro střídačku (Bench Minor Penalty)."
+  },
+  {
+    "rule": "Pravidlo 48.1",
+    "category": "Úder do hlavy nebo krku",
+    "question": "Hráč provede zákrok, kde hlavní částí kontaktu je hlava soupeře. Rozhodčí situaci vyhodnotí na videu jako bezohledné ohrožení. Jaký trest musí uložit?",
+    "options": [
+      "Menší trest (2 min).",
+      "Dvojitý menší trest (2+2 min).",
+      "Větší trest (5 min) + trest do konce utkání (Match Penalty).",
+      "Osobní trest 10 minut."
+    ],
+    "correctIndex": 2,
+    "explanation": "IIHF u pravidla 48 (Zásah do hlavy nebo krku) nepřipouští menší trest, pokud jde o nebezpečný zákrok. Uděluje se Větší trest (5 min) + automatický trest do konce utkání."
+  },
+  {
+    "rule": "Pravidlo 16.1",
+    "category": "Menší trest",
+    "question": "Hráči je uložen menší trest (2 min). Během probíhající přesilové hry vstřelí soupeř gól z hry. Jaký je správný postup rozhodčího?",
+    "options": [
+      "Menší trest se okamžitě ruší a hráč se vrací z trestné lavice na led.",
+      "Menší trest pokračuje v plném rozsahu 2 minut bez ohledu na vstřelený gól.",
+      "Trest se ruší pouze v případě, že k vstřelení gólu došlo v první minutě trestu.",
+      "Hráč zůstává na trestné lavici, ale jeho tým může ihned doplnit počet hráčů na ledě."
+    ],
+    "correctIndex": 0,
+    "explanation": "Podle pravidla 16.1 platí, že pokud tým hrající v oslabení z důvodu uloženého menšího trestu obdrží gól, tento menší trest se automaticky ruší a potrestaný hráč se vrací do hry."
+  },
+  {
+    "rule": "Pravidlo 17.1",
+    "category": "Větší trest",
+    "question": "Tým A hraje v oslabení po uložení Většího trestu (5 min). Tým B v této přesilové hře vstřelí gól. Ruší se tento 5minutový trest?",
+    "options": [
+      "Ano, vstřelený gól ruší zbytek Většího trestu.",
+      "Ne, Větší trest (5 min) se zrušit nemůže a musí být odpykán v plné délce 5 minut bez ohledu na počet inkasovaných gólů.",
+      "Ruší se pouze v případě, že se jednalo o druhý inkasovaný gól.",
+      "Přemění se na menší trest (2 min), který pokračuje."
+    ],
+    "correctIndex": 1,
+    "explanation": "Větší trest (5 min) je podle pravidel IIHF neodpykatelný předčasně. Tým musí odehrát celých 5 minut v oslabení, i kdyby soupeř v této přesilové hře vstřelil více gólů."
+  },
+  {
+    "rule": "Situation Book 18.2",
+    "category": "Dvojitý menší trest",
+    "question": "Hráči byl uložen Dvojitý menší trest (2+2 min). Soupeř vstřelí gól v čase 1:30 prvního trestu. Jak rozhodčí upraví časový trest?",
+    "options": [
+      "Oba tresty se okamžitě ruší.",
+      "Ruší se první trest (2 min), ale druhý menší trest (2 min) začíná ihned běžet od času vstřelení gólu.",
+      "První trest doběhne a druhý trest se zruší.",
+      "Žádný trest se neruší, hráč musí odsedět celé 4 minuty."
+    ],
+    "correctIndex": 1,
+    "explanation": "Gól vstřelený proti týmu v oslabení ruší ten trest, který právě běží. První menší trest (2 min) se tedy ruší a okamžitě začíná běžet druhý menší trest v délce 2 minut."
+  },
+  {
+    "rule": "Pravidlo 19.1",
+    "category": "Současné tresty",
+    "question": "Při přerušení hry je uložen menší trest (2 min) hráčovému z týmu A i hráčovému z týmu B za hrubost (coincidental minor penalties). Jakým počtem hráčů se pokračuje ve hře?",
+    "options": [
+      "Hraje se 4 na 4.",
+      "Hraje se 5 na 5, tresty se vzájemně vykrátí na výsledkové tabuli, ale oba hráči odejdou na trestnou lavici.",
+      "Hráči nejdou na trestnou lavici a hraje se 5 na 5.",
+      "Vhazuje se ve středním pásmu a hraje se 3 na 3."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pokud jsou uloženy stejné (současné) menší tresty oběma týmům ve stejném přerušení, tresty se ruší pro účely počtu hráčů na ledě (hra pokračuje 5 na 5). Oba hráči však musí odsedět 2 minuty na trestné lavici do prvního přerušení po vypršení času."
+  },
+  {
+    "rule": "Pravidlo 20.4",
+    "category": "Trest do konce utkání",
+    "question": "Hráč obdrží Trest do konce utkání (Game Misconduct Penalty). Jaký je bezprostřední dopad na družstvo a hráče?",
+    "options": [
+      "Hráč je odsouzen k odchodu do šatny pro zbytek zápasu a jeho tým hraje okamžitě 5 minut v oslabení.",
+      "Hráč odejde do šatny, ale tým nehraje v oslabení, pokud nebyl trest spojen s menším nebo větším trestem.",
+      "Hráč sedí 10 minut na trestné lavici a pak se může vrátit do hry.",
+      "Tým hraje v oslabení 2 minuty a hráč zůstává na střídačce bez možnosti zasáhnout do hry."
+    ],
+    "correctIndex": 1,
+    "explanation": "Samotný trest do konce utkání (Game Misconduct) si nevyžaduje oslabení týmu na ledě, pokud k němu nebyl uložen zároveň i časový trest (např. 5 min nebo 2 min). Hráč však musí okamžitě opustit hrací plochu a odejít do šatny."
+  },
+  {
+    "rule": "Situation Book 21.1",
+    "category": "Trestné střílení / Odvolání brankáře",
+    "question": "Tým A má odvolaného brankáře. Hráč týmu B v úniku směřuje na prázdnou branku, ale v pásmu je faulován zezadu bránícím hráčem. Jaké je rozhodnutí rozhodčího?",
+    "options": [
+      "Nařídí se klasické trestné střílení.",
+      "Přizná se automaticky gól ve prospěch týmu B.",
+      "Uloží se pouze větší trest (5 min) pro bránícího hráče.",
+      "Hra pokračuje dál až do přerušení."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pokud je brankář odvolán z ledové plochy a útočící hráč s pukem v úniku na prázdnou branku je faulován, rozhodčí neukládá trestné střílení, ale přiznává automaticky gól (Awarded Goal)."
+  },
+  {
+    "rule": "Pravidlo 41.2",
+    "category": "Vrážení na hrazení (Boarding)",
+    "question": "Hráč narazí soupeře bezohledným způsobem na mantinel tak, že způsobí jeho zranění. Jaký trest MUSÍ rozhodčí podle pravidel IIHF uložit?",
+    "options": [
+      "Menší trest (2 min).",
+      "Větší trest (5 min) a automaticky Trest do konce utkání (Game Misconduct).",
+      "Dvojitý menší trest (2+2 min).",
+      "Pouze osobní trest 10 minut."
+    ],
+    "correctIndex": 1,
+    "explanation": "Podle pravidel IIHF za vrážení na hrazení, které vede ke zranění soupeře nebo vykazuje bezohledné ohrožení, musí být uložen Větší trest (5 min) + Trest do konce utkání."
+  },
+  {
+    "rule": "Pravidlo 42.1",
+    "category": "Napadení (Charging)",
+    "question": "Co je definováno jako napadení (Charging) podle pravidel IIHF?",
+    "options": [
+      "Jakýkoliv fyzický kontakt v útočném pásmu.",
+      "Zákrok, při kterém hráč fyzicky napadne soupeře po rozjetí z dálky s využitím intenzivní rychlosti nebo skočí do odehrání zákroku.",
+      "Pouze hit provedený hokejkou drženou obouruč.",
+      "Zásah protihráče v době, kdy nemá puk pod kontrolou déle než 5 sekund."
+    ],
+    "correctIndex": 1,
+    "explanation": "Napadení (Charging) je přestupek, při kterém hráč udělal více kroků k nabrání rychlosti před zákrokem, rozjel se z dálky za účelem tvrdého dohrání nebo při bodyčeku vyskočil."
+  },
+  {
+    "rule": "Pravidlo 43.1",
+    "category": "Zásah zezadu (Checking from Behind)",
+    "question": "Hráč tělem zasáhne soupeře zezadu, který je otočen zády a nemůže se bránit. Jaké tresty toto pravidlo umožňuje uplatnit?",
+    "options": [
+      "Pouze menší trest (2 min).",
+      "Menší trest + Osobní trest (2+10 min), nebo Větší trest + Trest do konce utkání (5+OK).",
+      "Vždy pouze trestné střílení.",
+      "Trest se neukládá, pokud měl soupeř hlavy dole."
+    ],
+    "correctIndex": 1,
+    "explanation": "Za úder zezadu IIHF neumožňuje uložit prostý menší trest (2 min). Vždy musí následovat kombinace 2 min + 10 min osobní trest, případně při bezohledném ohrožení 5 min + trest do konce utkání."
+  },
+  {
+    "rule": "Situation Book 46.1",
+    "category": "Šarvátka / Bitka (Fighting)",
+    "question": "Hráč si před začátkem potyčky/šarvátky úmyslně sundá ochrannou helmu. Jaké je správné rozhodnutí rozhodčího?",
+    "options": [
+      "To je dovoleno, pokud ji sundá i soupeř.",
+      "Bude mu uložen menší trest (2 min) / osobní trest za nesportovní chování/porušení výstroje v souvislosti s potyčkou.",
+      "Zápas je okamžitě skontumován.",
+      "Rozhodčí pouze přeruší hru a přikáže hráči helmu nasadit bez trestu."
+    ],
+    "correctIndex": 1,
+    "explanation": "Podle pravidel IIHF je přísně zakázáno úmyslně si snímat helmu před nebo během potyčky. Hráč je za toto jednání potrestán menším trestem / osobním trestem za porušení pravidel o výstroji a nesportovní chování."
+  },
+  {
+    "rule": "Pravidlo 47.1",
+    "category": "Zásah hlavou (Head-butting)",
+    "question": "Hráč se úmyslně pokusí zasáhnout soupeře temenem nebo čelem helmy (hlavičkování). K zásahu však nedojde. Jaký trest se ukládá?",
+    "options": [
+      "Žádný trest, pokus se netrestá.",
+      "Menší trest (2 min) za pokus o zásah hlavou.",
+      "Dvojitý menší trest (2+2 min).",
+      "Větší trest (5 min) + Trest do konce utkání."
+    ],
+    "correctIndex": 2,
+    "explanation": "Podle pravidel IIHF se pokus o zásah hlavou (Head-butting) trestá Dvojitým menším trestem (2+2 min). Dokonaný zásah se trestá 5+OK."
+  },
+  {
+    "rule": "Pravidlo 49.1",
+    "category": "Kopnutí (Kicking)",
+    "question": "Hráč v přerušení nebo během hry úmyslně nakopne soupeře bruslí. Jak rozhodne rozhodčí?",
+    "options": [
+      "Uloží menší trest za hrubost.",
+      "Uloží Větší trest (5 min) + Trest do konce utkání (Match Penalty).",
+      "Uloží osobní trest 10 minut.",
+      "Uloží dvojitý menší trest."
+    ],
+    "correctIndex": 1,
+    "explanation": "Zásah soupeře nohou/bruslí (Kicking) je extrémně nebezpečný přestupek. Pravidla IIHF stanovují v případě nakopnutí soupeře nekompromisně Větší trest (5 min) + Trest do konce utkání."
+  },
+  {
+    "rule": "Pravidlo 50.1",
+    "category": "Kopnutí kolenem (Kneeing)",
+    "question": "Bránící hráč vysune koleno do dráhy pohybujícího se útočníka a zasáhne ho kolenem na koleno. Jaký základní časový trest se ukládá, pokud nedošlo ke zranění?",
+    "options": [
+      "Menší trest (2 min).",
+      "Dvojitý menší trest (2+2 min).",
+      "Trestné střílení.",
+      "Osobní trest 10 minut."
+    ],
+    "correctIndex": 0,
+    "explanation": "Základním trestem za zásah kolenem (Kneeing) bez zranění je Menší trest (2 min). Pokud dojde ke zranění nebo bezohlednému ohrožení, zvyšuje se na 5+OK."
+  },
+  {
+    "rule": "Pravidlo 51.1",
+    "category": "Hrubost (Roughing)",
+    "question": "Kdy se uplatňuje trest za Hrubost (Roughing)?",
+    "options": [
+      "Při jakémkoliv dohrání tělem u mantinelu.",
+      "Při úderu rukou nebo pěstí směrem k soupeři, který nedosahuje intenzity pěstního souboje (bitky).",
+      "Pouze při použití hokejky jako zbraně.",
+      "Při slovní potyčce s rozhodčím."
+    ],
+    "correctIndex": 1,
+    "explanation": "Menší trest za hrubost se ukládá hráčům, kteří se účastní strkání, úderů rukavicí nebo drobných potyček, které nepřerostly v otevřenou bitku."
+  },
+  {
+    "rule": "Situation Book 52.2",
+    "category": "Podkopnutí (Slew-footing)",
+    "question": "Hráč zezadu zaskočí nohu soupeře svou nohou/bruslí a současně ho rukou nebo paží zatlačí do hrudi/ramene, čímž ho nebezpečně srazí na led. Jaký trest rozhodčí uplatní?",
+    "options": [
+      "Menší trest (2 min) za podražení.",
+      "Větší trest (5 min) + Trest do konce utkání.",
+      "Dvojitý menší trest (2+2 min).",
+      "Pouze napomenutí kapitanovi."
+    ],
+    "correctIndex": 1,
+    "explanation": "Podkopnutí (Slew-footing) je vysoce nebezpečný zákrok na nohy a trup zezadu. V IIHF pravidlech je trestán jako 5 min + Trest do konce utkání."
+  },
+  {
+    "rule": "Pravidlo 53.2",
+    "category": "Házení výstroje / Puku",
+    "question": "Hráč na střídačce úmyslně hodí zlomenou hokejku na ledovou plochu do směru, kde se pohybuje puk. Jaký trest rozhodčí udělí?",
+    "options": [
+      "Menší trest pro střídačku (Bench Minor Penalty - 2 min).",
+      "Trestné střílení.",
+      "Osobní trest do konce utkání pro trenéra.",
+      "Pouze napomenutí."
+    ],
+    "correctIndex": 0,
+    "explanation": "Hodí-li hráč nebo člen realizačního týmu ze střídačky hokejku či jiný předmět na led (a nedojde k tomu v útočném pásmu v situaci úniku na prázdnou branku), ukládá se Menší trest pro střídačku."
+  },
+  {
+    "rule": "Pravidlo 54.1",
+    "category": "Držení (Holding)",
+    "question": "Hráč rukou uchopí soupeřův dres a brání mu tak v volném pohybu. Jaký trest následuje?",
+    "options": [
+      "Menší trest (2 min).",
+      "Dvojitý menší trest (2+2 min).",
+      "Vykázání hry z pásma.",
+      "Osobní trest 10 minut."
+    ],
+    "correctIndex": 0,
+    "explanation": "Uchopí-li hráč soupeře, jeho dres nebo výstroj rukou/paží a omezuje jeho pohyb, ukládá se Menší trest (2 min) za držení (Holding)."
+  },
+  {
+    "rule": "Pravidlo 55.1",
+    "category": "Držení hole (Holding the Stick)",
+    "question": "Bránící hráč pevně sevře v dlani hokejku soupeře a tím mu zabrání v odehrání puku. Jak rozhodne rozhodčí?",
+    "options": [
+      "Menší trest (2 min) za Držení hole.",
+      "Menší trest (2 min) za Sekání.",
+      "Ponechá hru bez trestu.",
+      "Uloží osobní trest."
+    ],
+    "correctIndex": 0,
+    "explanation": "Uchopí-li hráč hokejku soupeře rukou nebo ji sevře v podpaží, jedná se o přestupek Držení hole (Holding the Stick) s trestem 2 minuty."
+  },
+  {
+    "rule": "Pravidlo 57.1",
+    "category": "Podražení (Tripping)",
+    "question": "Bránící hráč se vrhne po puku, zasažením puku jej odehraje, ale současně s tím přitom švihnutím hokejky podrazí soupeře na led. Jaký je verdikt v moderních pravidlech IIHF?",
+    "options": [
+      "Žádný trest – hokejka zasáhla jako první puk.",
+      "Menší trest (2 min) za podražení – prvenství odehrání puku již neomlouvá podražení soupeře.",
+      "Trestné střílení.",
+      "Vykázání vhazování."
+    ],
+    "correctIndex": 1,
+    "explanation": "Dle aktuálních pravidel IIHF platí, že i pokud hráč nejprve zasáhne puk, ale svým zákrokem (hokejkou/tělem) následně způsobí pád a podražení soupeře, ukládá se Menší trest za podražení."
+  },
+  {
+    "rule": "Situation Book 58.1",
+    "category": "Bodnutí špičkou hokejky (Spearing)",
+    "question": "Hráč bodne soupeře špičkou čepele hokejky (butt-ending / spearing) do břicha. Jaký trest rozhodčí uloží za dokonaný zásah?",
+    "options": [
+      "Menší trest (2 min).",
+      "Dvojitý menší trest (2+2 min).",
+      "Větší trest (5 min) + automatický Trest do konce utkání.",
+      "Osobní trest 10 minut."
+    ],
+    "correctIndex": 2,
+    "explanation": "Bodnutí špičkou čepele (Spearing) i koncem rukojeti (Butt-ending) je v případě dokonané intenzity trestáno jako Větší trest (5 min) + Trest do konce utkání."
+  },
+  {
+    "rule": "Pravidlo 59.1",
+    "category": "Krosček (Cross-checking)",
+    "question": "Co charakterizuje přestupek Krosček (Cross-checking)?",
+    "options": [
+      "Seknutí soupeře shora dolů.",
+      "Úder drženou hokejkou oběma rukama, při kterém se část žerdi mezi rukama dotkne soupeřova těla s využitím síly.",
+      "Bodnutí špičkou hokejky.",
+      "Podražení soupeře spojením obou rukou na rukojeti."
+    ],
+    "correctIndex": 1,
+    "explanation": "Krosček je narazení nebo úder do soupeře hokejkou drženou oběma rukama nevloženou na led, kde kontakt zprostředkovává samotná žerď."
+  },
+  {
+    "rule": "Situation Book 62.1",
+    "category": "Sekání (Slashing) / Zlomená hůl",
+    "question": "Hráč A sekne do hokejky hráče B takovou silou, že se hokejka hráče B rozlomí na dva kusy. Hráč A zasáhl pouze hokejku, nikoliv tělo. Udělí se trest?",
+    "options": [
+      "Ne, zásah hokejky do hokejky je běžnou součástí hry.",
+      "Ano, menší trest (2 min) za Sekání – zlomení soupeřovy hole úderem se trestá.",
+      "Ano, menší trest za poškození výstroje.",
+      "Pouze pokud k tomu došlo v obranném pásmu."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pokud hráč sekne po hokejce soupeře a způsobí její zlomení, posuzuje se tento silový zákrok jako Sekání (Slashing) a udělí se Menší trest (2 min)."
+  },
+  {
+    "rule": "Pravidlo 64.1",
+    "category": "Nafingování pádu / Simování (Diving)",
+    "question": "Hráč po lehkém kontaktu se soupeřem přehnaně teatralizuje pád na led, aby vyprovokoval vyloučení soupeře. Jak rozhodne rozhodčí?",
+    "options": [
+      "Vyloučí pouze soupeře za faul.",
+      "Může uložit menší trest (2 min) za Nafingovaný pád (Diving / Embellishment).",
+      "Uloží osobní trest 10 minut.",
+      "Hru nepřeruší a dá hráči ústní varování při přerušení."
+    ],
+    "correctIndex": 1,
+    "explanation": "Za nafingovaný pád nebo zveličování následků kontaktu (Embellishment) se ukládá Menší trest (2 min). Často bývá uplatněn současně s trestem pro soupeře."
+  },
+  {
+    "rule": "Pravidlo 65.2",
+    "category": "Zlomená hokejka",
+    "question": "Hráči v poli se zlomí hokejka. Jaké má možnosti podle pravidel?",
+    "options": [
+      "Může dál hrát se zlomenou hokejkou, pokud nikoho neohrožuje.",
+      "Musí okamžitě odhodit zlomenou hokejku na led a může pokračovat ve hře bez ní (nebo si vzít novou ze střídačky).",
+      "Musí okamžitě odjet střídat a nesmí se zapojit do hry.",
+      "Brankář mu musí okamžitě předat svou hokejku."
+    ],
+    "correctIndex": 1,
+    "explanation": "Hráč v poli, kterému se zlomí hokejka, ji musí ihned pustit/odhodit na led. Pokud pokračuje ve hře se zlomenou hokejkou, obdrží menší trest (2 min)."
+  },
+  {
+    "rule": "Situation Book 65.3",
+    "category": "Předání hokejky brankáři",
+    "question": "Brankář ztratí nebo zlomí svou hokejku. Spoluhráč z pole mu podá svou hokejku z pole tak, že mu ji přihodí/pustí po ledě. Je to dovoleno?",
+    "options": [
+      "Ano, po ledě se hokejka házet může.",
+      "Ne, hokejka musí být předána přímo z ruky do ruky. Za pohození/hození hokejky se ukládá menší trest.",
+      "Ano, ale pouze pokud je to hokejka pro brankáře.",
+      "Brankář nesmí přijmout hokejku od spoluhráče."
+    ],
+    "correctIndex": 1,
+    "explanation": "Hokejka (i pro brankáře) musí být vždy předána přímo z ruky do ruky. Hození nebo posunutí hokejky po ledě směrem k hráči/brankáři je přestupek trestný menším trestem."
+  },
+  {
+    "rule": "Pravidlo 68.1",
+    "category": "Střídání hráčů / Příliš mnoho hráčů na ledě",
+    "question": "Tým provádí střídání za hry. Střídající hráč vstoupí na led, přičemž střídaný hráč je 2 metry od střídačky. Puk náhodně zasáhne střídaného hráče. Jak rozhodne rozhodčí?",
+    "options": [
+      "Ponechá hru bez trestu, jde o náhodný dotek.",
+      "Uloží menší trest pro střídačku (Too Many Players on the Ice).",
+      "Přeruší hru a vhazuje se ve středu ledu bez trestu.",
+      "Uloží osobní trest střídajícímu hráčovi."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pokud se střídaný nebo střídající hráč zapojí do hry (i neúmyslným dotekem puku), zatímco jsou oba hráči na ledě mimo zónu střídačky, ukládá se Menší trest pro střídačku za příliš mnoho hráčů na ledě."
+  },
+  {
+    "rule": "Pravidlo 75.1",
+    "category": "Nesportovní chování (Unsportsmanlike Conduct)",
+    "question": "Hráč na trestné lavici vulgárně nadává čárovému rozhodčímu. Jaký trest mu bude přidán?",
+    "options": [
+      "Žádný, emoce k hokeji patří.",
+      "Menší trest pro střídačku (2 min).",
+      "Osobní trest (10 min), případně Trest do konce utkání při pokračování.",
+      "Automatické trestné střílení pro soupeře."
+    ],
+    "correctIndex": 2,
+    "explanation": "Za vulgární nebo dehonestující urážky rozhodčích se ukládá Osobní trest (10 min). Při dalším pokračování následuje Trest do konce utkání."
+  },
+  {
+    "rule": "Situation Book 75.4",
+    "category": "Plivnutí (Spitting)",
+    "question": "Hráč úmyslně poplive soupeře nebo rozhodčího během přerušení hry. Jaký trest následuje?",
+    "options": [
+      "Menší trest (2 min).",
+      "Osobní trest (10 min).",
+      "Větší trest (5 min) + Trest do konce utkání (Match Penalty).",
+      "Dvojitý menší trest (2+2 min)."
+    ],
+    "correctIndex": 2,
+    "explanation": "Plivnutí na soupeře, rozhodčího či diváka je hrubé porušení etiky sportu. Pravidla IIHF stanovují nekompromisní trest 5 min + Trest do konce utkání."
+  },
+  {
+    "rule": "Pravidlo 77.1",
+    "category": "Trest za zneužití videorozhodčího / výzvy",
+    "question": "Trenér si vezme trenérskou výzvu (Coach's Challenge) na neplatný gól kvůli offside. Video ukáže, že offside NENASTAL a gól platí. Jaký trest dostane tým, který výzvu neúspěšně podal?",
+    "options": [
+      "Ztrácí pouze oddychový čas (timeout).",
+      "Je mu uložen Menší trest pro střídačku (2 min za zdržování hry).",
+      "Dostane varování od hlavního rozhodčího.",
+      "Příští střídání musí odehrát bez brankáře."
+    ],
+    "correctIndex": 1,
+    "explanation": "Podle правил IIHF má neúspěšná trenérská výzva za následek uložení Menšího trestu pro střídačku (Bench Minor) za zdržování hry (při druhé neúspěšné výzvě pak 2+2 min)."
+  },
+  {
+    "rule": "Situation Book 84.1",
+    "category": "Tresty v Prodloužení (Overtime)",
+    "question": "V prodloužení (hra 3 na 3) je uložen menší trest týmu A. Jakým počtem hráčů na ledě se bude pokračovat ve hře?",
+    "options": [
+      "Tým A hraje ve 2, Tým B ve 3 (hra 3 na 2).",
+      "Tým A hraje ve 3, Tým B dostane jednoho hráče navíc – hraje se 4 na 3.",
+      "Přeruší se prodloužení a jdou se ihned nájezdy.",
+      "Hraje se 2 na 2."
+    ],
+    "correctIndex": 1,
+    "explanation": "V prodloužení 3 na 3 nesmí klesnout počet hráčů jednoho týmu pod 3. Při vyloučení hráče týmu A se tedy nepřemísťuje hráč pryč z ledu pro snížení na 2, ale tým B dostane 4. hráče (přesilová hra 4 na 3)."
+  }
+]
