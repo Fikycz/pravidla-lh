@@ -506,17 +506,4 @@
     "correctIndex": 1,
     "explanation": "V prodloužení 3 na 3 nesmí klesnout počet hráčů jednoho týmu pod 3. Při vyloučení hráče týmu A se tedy nepřemísťuje hráč pryč z ledu pro snížení na 2, ale tým B dostane 4. hráče (přesilová hra 4 na 3)."
   },
-  {
-    "rule": "Pravidlo 74.1",
-    "category": "Příliš mnoho hráčů",
-    "question": "Brankář míří na střídačku. V ten stejný moment na led vstupuje hráč týmu A. Tento hráč se již zmocnil puku ale brankář je v prostoru vhazovacích kruhů. Jaký trest se uloží?",
-    "options": [
-      "Žádný trest",
-      "Menší trest (2 min) – Příliš mnoho hráčů",
-      "Trestné střílení.",
-      "Přeruší se hra, vhazuje se v obranném pásmu týmu A."
-    ],
-    "correctIndex": 1,
-    "explanation": "Jelikož se brankář týmu stále nachází dále, jak 1,50 metru od střídačky, nelze vpustit hráče na led, který by se zmocnil puku. V tomto případě se uloží dvouminutový trest za příliš mnoho hráčů."
-  },
 ]
