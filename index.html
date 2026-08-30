@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IIHF Referee Quiz App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between p-4 font-sans">
+
+    <header class="max-w-2xl w-full mx-auto flex justify-between items-center py-4 border-b border-slate-700">
+        <h1 class="text-xl font-bold tracking-wide text-blue-400">IIHF Arbitro Rules</h1>
+        <div id="score-tracker" class="text-sm font-semibold bg-slate-800 px-3 py-1 rounded-full border border-slate-700">
+            Skóre: <span id="score" class="text-green-400">0</span> / <span id="total">0</span>
+        </div>
+    </header>
+
+    <main class="max-w-2xl w-full mx-auto my-auto bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700">
+        
+        <div class="flex justify-between items-center text-xs text-slate-400 mb-2">
+            <span id="rule-ref" class="font-mono bg-slate-700 px-2 py-0.5 rounded text-blue-300">Pravidlo --</span>
+            <span id="situation-type" class="uppercase tracking-wider">Situation Book</span>
+        </div>
+
+        <h2 id="question-text" class="text-lg font-medium text-slate-100 mb-6 leading-relaxed">
+            Načítání otázky...
+        </h2>
+
+        <div id="options-container" class="space-y-3">
+            </div>
+
+        <div id="explanation-card" class="mt-6 p-4 bg-slate-900 rounded-lg border border-slate-700 hidden">
+            <h3 class="font-bold text-sm text-slate-300 mb-1">Správná odpověď & Odůvodnění:</h3>
+            <p id="explanation-text" class="text-sm text-slate-400 leading-relaxed"></p>
+            <button id="next-btn" onclick="nextQuestion()" class="mt-4 w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg transition">
+                Další otázka &rarr;
+            </button>
+        </div>
+    </main>
+
+    <footer class="text-center text-xs text-slate-500 py-4">
+        Založeno na Oficiálních pravidlech IIHF a IIHF Situation Book.
+    </footer>
+
+    <script>
+        // Databáze otázek (IIHF Rules & Situation Book)
+        const quizData = [
+            {
+                rule: "Pravidlo 63.2",
+                category: "Zdržování hry",
+                question: "Brankář úmyslně posune brankovou konstrukci ze své původní pozice během probíhajícího soupeřova útočného tlaku. Jaké rozhodnutí musí rozhodčí učinit?",
+                options: [
+                    "Uložit menší trest (2 min) pro brankáře za Zdržování hry.",
+                    "Hru okamžitě přerušit a pouze vykázat vhazování do středního pásma.",
+                    "Uložit trestné střílení ve prospěch neprovinivšího se týmu.",
+                    "Uložit větší trest (5 min) + trest do konce utkání."
+                ],
+                correctIndex: 0,
+                explanation: "Podle IIHF Pravidla 63.2 se brankáři, který úmyslně posune branku ze své pozice, uloží Menší trest (2 min) za zdržování hry (pokud k tomu nedojde v posledních 2 minutách zápasu nebo v prodloužení, kde by následovalo trestné střílení)."
+            },
+            {
+                rule: "Situation Book 15.1",
+                category: "Signalizovaný trest / Gól",
+                question: "Je signalizován menší trest pro tým A. Tým B odvolá brankáře. Během výhody si hráč týmu B přihraje puk tak nešťastně, že skončí v jeho vlastní prázdné brance. Platí gól a bude trest uložen?",
+                options: [
+                    "Gól neplatí (hra měla být přerušena), trest týmu A se ruší.",
+                    "Gól platí, signalizovaný trest týmu A se Stále ukládá.",
+                    "Gól platí, signalizovaný trest týmu A se anuluje (zruší vlivem gólu).",
+                    "Gól neplatí, ukládá se pouze trest týmu A."
+                ],
+                correctIndex: 1,
+                explanation: "Podle IIHF Situation Book: Pokud si tým výhody vstřelí vlastní gól bez doteku soupeře, gól PLATÍ. Signalizovaný trest pro tým A se ZRUŠIT NEMŮŽE, protože gól nevstřelil tým s výhodou, ale provinivší se tým nezpůsobil přerušení. Trest se tedy normálně uloží."
+            }
+        ];
+
+        let currentIndex = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const current = quizData[currentIndex];
+            document.getElementById('rule-ref').textContent = current.rule;
+            document.getElementById('situation-type').textContent = current.category;
+            document.getElementById('question-text').textContent = current.question;
+            document.getElementById('explanation-card').classList.add('hidden');
+            
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+
+            current.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-3 rounded-lg border border-slate-700 bg-slate-700/50 hover:bg-slate-700 transition flex items-center justify-between group";
+                btn.onclick = () => selectOption(idx);
+                btn.innerHTML = `<span>${opt}</span>`;
+                container.appendChild(btn);
+            });
+
+            document.getElementById('total').textContent = quizData.length;
+            document.getElementById('score').textContent = score;
+        }
+
+        function selectOption(selectedIndex) {
+            const current = quizData[currentIndex];
+            const buttons = document.getElementById('options-container').children;
+
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = true;
+                if (i === current.correctIndex) {
+                    buttons[i].classList.add('bg-green-600/30', 'border-green-500', 'text-green-200');
+                } else if (i === selectedIndex) {
+                    buttons[i].classList.add('bg-red-600/30', 'border-red-500', 'text-red-200');
+                }
+            }
+
+            if (selectedIndex === current.correctIndex) {
+                score++;
+                document.getElementById('score').textContent = score;
+            }
+
+            document.getElementById('explanation-text').textContent = current.explanation;
+            document.getElementById('explanation-card').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentIndex = (currentIndex + 1) % quizData.length;
+            loadQuestion();
+        }
+
+        // Start
+        loadQuestion();
+    </script>
+</body>
+</html>
