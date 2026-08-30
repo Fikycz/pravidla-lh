@@ -210,7 +210,7 @@
   {
     "rule": "Pravidlo 41.2",
     "category": "Vrážení na hrazení (Boarding)",
-    "question": "Hráč narazí soupeře bezohledným způsobem na mantinel tak, že způsobí jeho zranění. Jaký trest MUSÍ rozhodčí podle pravidel IIHF uložit?",
+    "question": "Hráč narazí soupeře bezohledným způsobem na mantinel tak, že způsobí jeho zranění. Jaký trest musí rozhodčí podle pravidel IIHF uložit?",
     "options": [
       "Menší trest (2 min).",
       "Větší trest (5 min) a automaticky Trest do konce utkání (Game Misconduct).",
@@ -232,19 +232,6 @@
     ],
     "correctIndex": 1,
     "explanation": "Napadení (Charging) je přestupek, při kterém hráč udělal více kroků k nabrání rychlosti před zákrokem, rozjel se z dálky za účelem tvrdého dohrání nebo při bodyčeku vyskočil."
-  },
-  {
-    "rule": "Pravidlo 43.1",
-    "category": "Zásah zezadu (Checking from Behind)",
-    "question": "Hráč tělem zasáhne soupeře zezadu, který je otočen zády a nemůže se bránit. Jaké tresty toto pravidlo umožňuje uplatnit?",
-    "options": [
-      "Pouze menší trest (2 min).",
-      "Menší trest + Osobní trest (2+10 min), nebo Větší trest + Trest do konce utkání (5+OK).",
-      "Vždy pouze trestné střílení.",
-      "Trest se neukládá, pokud měl soupeř hlavy dole."
-    ],
-    "correctIndex": 1,
-    "explanation": "Za úder zezadu IIHF neumožňuje uložit prostý menší trest (2 min). Vždy musí následovat kombinace 2 min + 10 min osobní trest, případně při bezohledném ohrožení 5 min + trest do konce utkání."
   },
   {
     "rule": "Situation Book 46.1",
