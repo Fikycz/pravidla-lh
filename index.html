@@ -8,6 +8,7 @@
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between p-4 font-sans">
 
+    <!-- Header -->
     <header class="max-w-2xl w-full mx-auto flex justify-between items-center py-4 border-b border-slate-700">
         <h1 class="text-xl font-bold tracking-wide text-blue-400">IIHF Arbitro Rules</h1>
         <div id="score-tracker" class="text-sm font-semibold bg-slate-800 px-3 py-1 rounded-full border border-slate-700">
@@ -15,20 +16,26 @@
         </div>
     </header>
 
+    <!-- Main Quiz Container -->
     <main class="max-w-2xl w-full mx-auto my-auto bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700">
         
+        <!-- Question Meta -->
         <div class="flex justify-between items-center text-xs text-slate-400 mb-2">
             <span id="rule-ref" class="font-mono bg-slate-700 px-2 py-0.5 rounded text-blue-300">Pravidlo --</span>
-            <span id="situation-type" class="uppercase tracking-wider">Situation Book</span>
+            <span id="situation-type" class="uppercase tracking-wider">Kategorie</span>
         </div>
 
+        <!-- Question Text -->
         <h2 id="question-text" class="text-lg font-medium text-slate-100 mb-6 leading-relaxed">
-            Načítání otázky...
+            Načítání otázek...
         </h2>
 
+        <!-- Options Container -->
         <div id="options-container" class="space-y-3">
-            </div>
+            <!-- Dynamicky vkládané odpovědi -->
+        </div>
 
+        <!-- Explanation Card (Hidden by default) -->
         <div id="explanation-card" class="mt-6 p-4 bg-slate-900 rounded-lg border border-slate-700 hidden">
             <h3 class="font-bold text-sm text-slate-300 mb-1">Správná odpověď & Odůvodnění:</h3>
             <p id="explanation-text" class="text-sm text-slate-400 leading-relaxed"></p>
@@ -38,45 +45,35 @@
         </div>
     </main>
 
+    <!-- Footer -->
     <footer class="text-center text-xs text-slate-500 py-4">
         Založeno na Oficiálních pravidlech IIHF a IIHF Situation Book.
     </footer>
 
+    <!-- Logic Script -->
     <script>
-        // Databáze otázek (IIHF Rules & Situation Book)
-        const quizData = [
-            {
-                rule: "Pravidlo 63.2",
-                category: "Zdržování hry",
-                question: "Brankář úmyslně posune brankovou konstrukci ze své původní pozice během probíhajícího soupeřova útočného tlaku. Jaké rozhodnutí musí rozhodčí učinit?",
-                options: [
-                    "Uložit menší trest (2 min) pro brankáře za Zdržování hry.",
-                    "Hru okamžitě přerušit a pouze vykázat vhazování do středního pásma.",
-                    "Uložit trestné střílení ve prospěch neprovinivšího se týmu.",
-                    "Uložit větší trest (5 min) + trest do konce utkání."
-                ],
-                correctIndex: 0,
-                explanation: "Podle IIHF Pravidla 63.2 se brankáři, který úmyslně posune branku ze své pozice, uloží Menší trest (2 min) za zdržování hry (pokud k tomu nedojde v posledních 2 minutách zápasu nebo v prodloužení, kde by následovalo trestné střílení)."
-            },
-            {
-                rule: "Situation Book 15.1",
-                category: "Signalizovaný trest / Gól",
-                question: "Je signalizován menší trest pro tým A. Tým B odvolá brankáře. Během výhody si hráč týmu B přihraje puk tak nešťastně, že skončí v jeho vlastní prázdné brance. Platí gól a bude trest uložen?",
-                options: [
-                    "Gól neplatí (hra měla být přerušena), trest týmu A se ruší.",
-                    "Gól platí, signalizovaný trest týmu A se Stále ukládá.",
-                    "Gól platí, signalizovaný trest týmu A se anuluje (zruší vlivem gólu).",
-                    "Gól neplatí, ukládá se pouze trest týmu A."
-                ],
-                correctIndex: 1,
-                explanation: "Podle IIHF Situation Book: Pokud si tým výhody vstřelí vlastní gól bez doteku soupeře, gól PLATÍ. Signalizovaný trest pro tým A se ZRUŠIT NEMŮŽE, protože gól nevstřelil tým s výhodou, ale provinivší se tým nezpůsobil přerušení. Trest se tedy normálně uloží."
-            }
-        ];
-
+        let quizData = [];
         let currentIndex = 0;
         let score = 0;
 
+        // Načtení dat z externího JSON souboru
+        async function initQuiz() {
+            try {
+                const response = await fetch('questions.json');
+                const data = await response.json();
+                
+                // Náhodné promíchání otázek při každém načtení
+                quizData = data.sort(() => Math.random() - 0.5);
+                loadQuestion();
+            } catch (error) {
+                document.getElementById('question-text').textContent = 'Chyba při načítání databáze. Ujistěte se, že soubor questions.json existuje a je správně naformátován.';
+                console.error(error);
+            }
+        }
+
         function loadQuestion() {
+            if (quizData.length === 0) return;
+
             const current = quizData[currentIndex];
             document.getElementById('rule-ref').textContent = current.rule;
             document.getElementById('situation-type').textContent = current.category;
@@ -125,8 +122,8 @@
             loadQuestion();
         }
 
-        // Start
-        loadQuestion();
+        // Start aplikace
+        initQuiz();
     </script>
 </body>
 </html>
