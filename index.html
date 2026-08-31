@@ -125,32 +125,24 @@
         }
 
         function startQuiz(count) {
-    if (!rawData || rawData.length === 0) {
-        alert("Není načten žádný soubor questions.json.");
-        return;
-    }
+            if (!rawData || rawData.length === 0) {
+                alert("Nelze spustit test: Není načten žádný soubor questions.json.");
+                return;
+            }
 
-    const selectedIndices = new Set();
-    const maxQuestions = Math.min(count, rawData.length);
+            // Zamíchání načtených otázek ze souboru
+            const shuffled = [...rawData].sort(() => Math.random() - 0.5);
+            activeQuestions = shuffled.slice(0, Math.min(count, shuffled.length));
+            
+            userAnswers = {};
+            currentIndex = 0;
 
-    // Náhodně vybíráme indexy ze seznamu, dokud nemáme požadovaný počet unikátních otázek
-    while (selectedIndices.size < maxQuestions) {
-        const randomIndex = Math.floor(Math.random() * rawData.length);
-        selectedIndices.add(randomIndex);
-    }
-
-    // Vytvoříme pole otázek na základě vybraných náhodných indexů
-    activeQuestions = Array.from(selectedIndices).map(index => rawData[index]);
-
-    userAnswers = {};
-    currentIndex = 0;
-
-    document.getElementById('menu-card').classList.add('hidden');
-    document.getElementById('results-card').classList.add('hidden');
-    document.getElementById('quiz-card').classList.remove('hidden');
-
-    loadQuestion();
-}
+            document.getElementById('menu-card').classList.add('hidden');
+            document.getElementById('results-card').classList.add('hidden');
+            document.getElementById('quiz-card').classList.remove('hidden');
+            
+            loadQuestion();
+        }
         function loadQuestion() {
             const current = activeQuestions[currentIndex];
             
