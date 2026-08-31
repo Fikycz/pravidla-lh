@@ -528,7 +528,7 @@
       "Čárový rozhodčí může přestupek nahlásit v případě dvojitého MT za vysokou hůl, nebo pokud by k přestupku došlo v potyčce."
     ],
     "correctIndex": 3,
-    "explanation": "V prodloužení 3 na 3 nesmí klesnout počet hráčů jednoho týmu pod 3. Při vyloučení hráče týmu A se tedy nepřemísťuje hráč pryč z ledu pro snížení na 2, ale tým B dostane 4. hráče (přesilová hra 4 na 3)."
+    "explanation": "Pokus o bodnutí koncem holí je sice trestán jako 2+2, ale mezi věcmi, které může čárový rozhodčí nahlásit tento prohřešek není. Čárový rozhodčí může nahlásit pouze trest za vysokou hůl, který by byl na 2+2. Avšak může tuto situaci oznámit hlavnímu rozhodčímu, který může v potyčce rozdat patřičné tresty."
   },
   {
     "rule": "Situation Book 55.2",
@@ -581,5 +581,200 @@
     ],
     "correctIndex": 2,
     "explanation": "Hráči Týmu A byl uložen MT který končí až v druhé třetině. Avšak v čase 0:00 byl hráči Týmu B uložen MT. Po úpravě ledu a začátkem druhé třetiny byl hráči Týmu A uložen MT za nesportovní chování, tudíž se tresty vykrátí (byly uloženy ve stejném čase). Hra tedy bude pokračovat 4:5 s původním trestem pro Tým A. Pravidlo 19.1"
+  },
+  {
+    "rule": "Pravidlo 53.7",
+    "category": "Hození hole / Technický gól",
+    "question": "Hráč postupuje sám na prázdnou branku. Bránící hráč za ním hodí svou hokejku a zasáhne puk. Jak rozhodnou rozhodčí?",
+    "options": [
+      "Přiznají technický gól.",
+      "Nařídí trestné střílení.",
+      "Nechají hru pokračovat.",
+      "Uloží menší trest za nedovolené bránění."
+    ],
+    "correctIndex": 0,
+    "explanation": "Pokud hráč v úniku na prázdnou branku čelí hození hole nebo jakéhokoliv předmětu od soupeře, rozhodčí okamžitě přiznají technický gól."
+  },
+  {
+    "rule": "Pravidlo 83.1",
+    "category": "Postavení mimo hru (Offside)",
+    "question": "Hráč s pukem pod kontrolou vjede do útočného pásma pozpátku dříve než puk. Bude odpískán ofsajd?",
+    "options": [
+      "Ano, vždy když je hráč v pásmu dřív než puk.",
+      "Ne, pokud měl hráč puk plně pod kontrolou před přejetím modré čáry.",
+      "Ano, vyjádřeno signalizovaným ofsajdem.",
+      "Záleží na tom, zda se dotkne modré čáry druhou bruslí."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pokud má hráč puk plně pod kontrolou, může do útočného pásma vjet pozpátku dříve než puk, aniž by šlo o postavení mimo hru."
+  },
+  {
+    "rule": "Pravidlo 67.3",
+    "category": "Zdržování hry",
+    "question": "Brankář vyjede zcela mimo své brankoviště a přikryje puk lapačkou, přestože není pod tlakem soupeře. Jaký trest následuje?",
+    "options": [
+      "Žádný, pouze vhazování.",
+      "Menší trest za zdržování hry.",
+      "Osobní trest na 10 minut.",
+      "Varování kapitánovi týmu."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pokud brankář přikryje puk mimo své brankoviště a není vystaven tlaku soupeře, způsobí úmyslné zdržování hry a dostane menší trest (2 min)."
+  },
+  {
+    "rule": "Pravidlo 63.7",
+    "category": "Technický gól",
+    "question": "Útočící hráč jede sám na prázdnou branku (brankář je odvolán) a obránce bránícího týmu úmyslně posune brankovou konstrukci. Jak rozhodnou rozhodčí?",
+    "options": [
+      "Nařídí trestné střílení.",
+      "Přiznají technický gól.",
+      "Uloží pouze menší trest za zdržování hry.",
+      "Vykážou vhazování do koncového pásma a uloží větší trest."
+    ],
+    "correctIndex": 1,
+    "explanation": "Podle Pravidla 63.7 se přizná technický gól, pokud je brankář odvolán a hráč v úniku na prázdnou branku je zmařen úmyslným posunutím branky."
+  },
+  {
+    "rule": "Pravidlo 67.2",
+    "category": "Sevření puku rukou",
+    "question": "Hráč v poli zaklekne na puk v obranném pásmu a úmyslně ho sevře v dlani pod tělem, čímž způsobí přerušení hry. Jaký trest následuje?",
+    "options": [
+      "Vhazování v obranném pásmu bez trestu.",
+      "Menší trest za zdržování hry / sevření puku.",
+      "Trestné střílení, pokud se tak stane v brankovišti.",
+      "Dvojitý menší trest."
+    ],
+    "correctIndex": 2,
+    "explanation": "Pokud hráč v poli (jiný než brankář) v brankovišti úmyslně pádne na puk, sevře ho nebo přikryje rukou, nařizuje se trestné střílení (Pravidlo 67.4)."
+  },
+  {
+    "rule": "Pravidlo 78.5",
+    "category": "Uznání gólu",
+    "question": "Útočící hráč usměrní puk do branky tělem (stehnem), aniž by učinil jakýkoliv zřetelný kopací pohyb. Bude gól uznán?",
+    "options": [
+      "Ano, gól platí.",
+      "Ne, gól platí pouze při odrazu od hokejky.",
+      "Ne, jakýkoliv gól dosažený tělem je neplatný.",
+      "Ne, gól platí pouze, pokud by byl puk částí těla tečován."
+    ],
+    "correctIndex": 2,
+    "explanation": "Gól dosažený usměrněním puku jakoukoliv částí těla nebude uznán. Byl by puk pouze tečován částí těla, gól by byl uznán. Avšak nasměrování kotouče není možný dle pravidla 78.4."
+  },
+  {
+    "rule": "Pravidlo 49.2",
+    "category": "Kopnutí puku",
+    "question": "Útočící hráč úmyslně kopne do puku bruslí a puk se následně odrazí od bránícího obránce do branky. Bude gól uznán?",
+    "options": [
+      "Ano, protože se puk odrazil od bránícího hráče.",
+      "Ne, gól nemůže být uznán, pokud byl puk přímo kopnut útočícím hráčem a nevstřelil ho jiný útočící hráč hokejkou.",
+      "Ano, ale pouze po přezkoumání videorozhodčím bez omezení.",
+      "Ano, pokud obránce změnil směr puku o více než 90 stupňů."
+    ],
+    "correctIndex": 1,
+    "explanation": "Podle Pravidla 49.2 úmyslně kopnutý puk útočícím hráčem nemůže platit jako gól, ani když se odrazí od jakéhokoliv hráče (včetně brankáře nebo obránce) přímo do branky."
+  },
+  {
+    "rule": "Pravidlo 81.1",
+    "category": "Zakázané uvolnění (Icing)",
+    "question": "Tým hrající v oslabení vyhodí puk z vlastní poloviny přes celou plochu za brankovou čáru soupeře. Bude pískáno zakázané uvolnění?",
+    "options": [
+      "Ano, icing platí vždy.",
+      "Ne, tým v oslabení může vyhazovat puky bez pískání zakázaného uvolnění.",
+      "Ano, ale pouze v kategorii U18 a mladších.",
+      "Záleží na rozhodnutí čárového rozhodčího."
+    ],
+    "correctIndex": 1,
+    "explanation": "Podle standardních pravidel IIHF se zakázané uvolnění nepíská proti týmu, který hraje v početném oslabení."
+  },
+  {
+    "rule": "Pravidlo 85.1",
+    "category": "Puk mimo hrací plochu",
+    "question": "Útočící hráč vystřelí puk z útočného pásma a ten vyletí přímo nad ochranné sklo na střídačku soupeře. Kde se uskuteční následné vhazování?",
+    "options": [
+      "Ve středním pásmu na nejbližším bodě vhazování.",
+      "Na středovém bodě pro vhazování",
+      "V obranném pásmu útočícího týmu.",
+      "V útočném pásmu na bodě vhazování bližším místu střely."
+    ],
+    "correctIndex": 3,
+    "explanation": "Pokud je puk vystřelen z útočného pásma a skončí na střídačce nebo mimo hrací plochu bez teče obránců, vhazuje se v útočném pásmu (pokud střela nebyla úmyslným vyhozením mimo plochu)."
+  },
+  {
+    "rule": "Pravidlo 76.4",
+    "category": "Vhazování",
+    "question": "Který hráč musí položit hokejku na led jako první při vhazování v koncovém (útočném/obranném) pásmu?",
+    "options": [
+      "Hráč bránícího týmu.",
+      "Hráč útočícího týmu.",
+      "Hráč hostujícího týmu.",
+      "Oba hráči současně na pokyn rozhodčího."
+    ],
+    "correctIndex": 0,
+    "explanation": "Při vhazování na koncových bodech vhazování musí položit hokejku jako první hráč bránícího týmu."
+  },
+  {
+    "rule": "Pravidlo 15.1",
+    "category": "Ponechaná výhoda",
+    "question": "Probíhá signalizovaný menší trest pro tým A. Tým B vstřelí gól během ponechané výhody. Jaký bude následek pro signalizovaný trest?",
+    "options": [
+      "Signalizovaný menší trest se neruší",
+      "Signalizovaný menší trest se ruší; gól platí",
+      "Gól platí a trest se přesto uloží v plném rozsahu.",
+      "Gól se neuzná a tým A jde do oslabení."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pokud je signalizován menší trest a neprovinivší se tým vstřelí gól, signalizovaný trest se neukládá (anuluje se)."
+  },
+  {
+    "rule": "Pravidlo 15.1",
+    "category": "Ponechaná výhoda",
+    "question": "Probíhá signalizovaný větší trest (5 min) pro tým A. Tým B vstřelí během výhody gól. Jaký je postih pro tým A?",
+    "options": [
+      "Větší trest se ruší.",
+      "Gól neplatí a větší trest se uloží.",
+      "Gól platí a trest se zkrátí na 2 minuty.",
+      "Gól platí a větší trest (5 min) se přesto uloží v plném rozsahu."
+    ],
+    "correctIndex": 3,
+    "explanation": "Vstřelení gólu během signalizované výhody anuluje pouze signalizovaný MENŠÍ trest. Větší trest (5 min) se uloží vždy bez ohledu na vstřelený gól."
+  },
+  {
+    "rule": "Pravidlo 69.3",
+    "category": "Nedovolené bránění brankáři",
+    "question": "Útočící hráč je natlačen bránícím obráncem do brankoviště a dojde ke kontaktu s brankářem. Následně padne gól. Platí gól?",
+    "options": [
+      "Gól neplatí a útočník dostane menší trest.",
+      "Gól neplatí, ale trest se neukládá.",
+      "Gól platí, pokud se útočník snažil po natlačení kontakt vyklidit a nebránil úmyslně brankáři.",
+      "Gól neplatí, jednalo se o nedovolené bránění brankáři."
+    ],
+    "correctIndex": 2,
+    "explanation": "Pokud byl útočící hráč do brankoviště natlačen obráncem a vyvinul přiměřenou snahu brankáři vyhnout nebo brankoviště opustit, gól je platný."
+  },
+  {
+    "rule": "Pravidlo 63.2",
+    "category": "Zdržování hry / Vyhození puku",
+    "question": "Obránce ve vlastním obranném pásmu vystřelí puk z ledu přímo přes ochranné sklo mimo hrací plochu. Puk nebyl nikým tečován. Jaký trest rozhodčí uloží?",
+    "options": [
+      "Vhazování v obranném pásmu bez trestu.",
+      "Menší trest (2 min) za Zdržování hry pro daného obránce.",
+      "Menší trest pro hráčskou lavici.",
+      "Dvojitý menší trest (2+2 min)."
+    ],
+    "correctIndex": 1,
+    "explanation": "Podle Pravidla 63.2 se hráči, který ze svého obranného pásma vystřelí puk přímo (bez teče) přes ochranné sklo mimo hrací plochu, uloží Menší trest za zdržování hry."
+  },
+  {
+    "rule": "Pravidlo 70.3",
+    "category": "Opuštění střídačky",
+    "question": "Během potyčky na led vjede hráč ze střídačky, aby se zapojil do šarvátky jako první 'nepovolený' hráč. Jaký trest mu bude uložen?",
+    "options": [
+      "Menší trest (2 min).",
+      "Větší trest (5 min) + automatický Trest do konce utkání (OK).",
+      "Osobní trest na 10 minut.",
+      "Žádný trest na ledě, pouze disciplinární dohra."
+    ],
+    "correctIndex": 1,
+    "explanation": "Hráč, který neoprávněně opustí střídačku během potyčky nebo za účelem vyvolání potyčky, obdrží Větší trest a Trest do konce utkání (Pravidlo 70)."
   }
 ]
