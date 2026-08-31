@@ -657,7 +657,7 @@
       "Ne, jakýkoliv gól dosažený tělem je neplatný.",
       "Ne, gól platí pouze, pokud by byl puk částí těla tečován."
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "Gól dosažený usměrněním puku jakoukoliv částí těla nebude uznán. Byl by puk pouze tečován částí těla, gól by byl uznán. Avšak nasměrování kotouče není možný dle pravidla 78.4."
   },
   {
