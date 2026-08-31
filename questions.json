@@ -404,7 +404,7 @@
   },
   {
     "rule": "Pravidlo 64.1",
-    "category": "Nafingování pádu / Simování (Diving)",
+    "category": "Nafilmovaný pád / simulování",
     "question": "Hráč po lehkém kontaktu se soupeřem přehnaně teatralizuje pád na led, aby vyprovokoval vyloučení soupeře. Jak rozhodne rozhodčí?",
     "options": [
       "Vyloučí pouze soupeře za faul.",
@@ -451,8 +451,8 @@
       "Přeruší hru a vhazuje se ve středu ledu bez trestu.",
       "Uloží osobní trest střídajícímu hráčovi."
     ],
-    "correctIndex": 1,
-    "explanation": "Pokud se střídaný nebo střídající hráč zapojí do hry (i neúmyslným dotekem puku), zatímco jsou oba hráči na ledě mimo zónu střídačky, ukládá se Menší trest pro střídačku za příliš mnoho hráčů na ledě."
+    "correctIndex": 0,
+    "explanation": "Pokud by se střídající hráč nebo ten, který již vlezl na led dotkl puku, udělily by se dvě minuty za Příliš mnoho hráčů. Zde se jednalo pouze o náhodný dotek a žádný z hráčů nechtěl puk odehrát."
   },
   {
     "rule": "Pravidlo 75.1",
@@ -491,7 +491,7 @@
       "Příští střídání musí odehrát bez brankáře."
     ],
     "correctIndex": 1,
-    "explanation": "Podle правил IIHF má neúspěšná trenérská výzva za následek uložení Menšího trestu pro střídačku (Bench Minor) za zdržování hry (při druhé neúspěšné výzvě pak 2+2 min)."
+    "explanation": "Podle pravidel IIHF má neúspěšná trenérská výzva za následek uložení Menšího trestu pro střídačku (Bench Minor) za zdržování hry (při druhé neúspěšné výzvě pak 2+2 min)."
   },
   {
     "rule": "Situation Book 84.1",
