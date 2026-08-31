@@ -1,326 +1,129 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hokejový Kvíz</title>
-  
-  <!-- React a Babel z CDN pro rychlé spuštění bez sestavování -->
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  
-  <!-- Tailwind CSS pro moderní design -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kvíz z pravidel a situací IIHF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-100 min-h-screen text-slate-800 font-sans flex items-center justify-center p-4">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between p-4 font-sans">
 
-  <div id="root" class="w-full max-w-2xl"></div>
-
-  <script type="text/babel">
-    const { useState, useEffect } = React;
-
-    // Pomocná funkce pro zamíchání pole (Fisher-Yates)
-    const shuffleArray = (array) => {
-      const shuffled = [...array];
-      for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-      }
-      return shuffled;
-    };
-
-    function App() {
-      const [allQuestions, setAllQuestions] = useState([]);
-      const [loading, setLoading] = useState(true);
-      const [error, setError] = useState(null);
-
-      // Kvízový stav
-      const [testSize, setTestSize] = useState(null); // 10, 20, nebo 40
-      const [activeQuestions, setActiveQuestions] = useState([]);
-      const [currentIndex, setCurrentIndex] = useState(0);
-      const [userAnswers, setUserAnswers] = useState({});
-      const [isFinished, setIsFinished] = useState(false);
-      const [showReview, setShowReview] = useState(false);
-
-      // Načtení externího souboru questions.json
-      useEffect(() => {
-        fetch('./questions.json')
-          .then(res => {
-            if (!res.ok) throw new Error('Nepodařilo se načíst questions.json');
-            return res.json();
-          })
-          .then(data => {
-            setAllQuestions(data);
-            setLoading(false);
-          })
-          .catch(err => {
-            setError(err.message);
-            setLoading(false);
-          });
-      }, []);
-
-      // Spuštění nového testu
-      const startQuiz = (count) => {
-        const shuffled = shuffleArray(allQuestions);
-        const selected = shuffled.slice(0, Math.min(count, shuffled.length));
-
-        // Zamícháme otázky i jednotlivé odpovědi
-        const prepared = selected.map(q => {
-          const originalCorrect = q.options[q.correctAnswer.index];
-          const shuffledOpts = shuffleArray(q.options);
-          return {
-            ...q,
-            options: shuffledOpts,
-            correctIndex: shuffledOpts.indexOf(originalCorrect)
-          };
-        });
-
-        setActiveQuestions(prepared);
-        setTestSize(count);
-        setCurrentIndex(0);
-        setUserAnswers({});
-        setIsFinished(false);
-        setShowReview(false);
-      };
-
-      const resetToMenu = () => {
-        setTestSize(null);
-        setActiveQuestions([]);
-        setCurrentIndex(0);
-        setUserAnswers({});
-        setIsFinished(false);
-        setShowReview(false);
-      };
-
-      const handleSelectOption = (idx) => {
-        setUserAnswers({ ...userAnswers, [currentIndex]: idx });
-      };
-
-      // Výpočet výsledků
-      const calculateResults = () => {
-        let correctCount = 0;
-        activeQuestions.forEach((q, idx) => {
-          if (userAnswers[idx] === q.correctIndex) correctCount++;
-        });
-        const total = activeQuestions.length;
-        const percentage = Math.round((correctCount / total) * 100);
-        return { correctCount, total, percentage };
-      };
-
-      if (loading) return <div class="text-center p-8 font-semibold text-slate-600">Načítám otázky...</div>;
-      if (error) return <div class="text-center p-8 text-red-600 font-semibold">Chyba: {error}</div>;
-
-      // -------------------------------------------------------------
-      // 1. HLAVNÍ MENU
-      // -------------------------------------------------------------
-      if (!testSize) {
-        return (
-          <div class="bg-white rounded-2xl shadow-xl p-8 text-center border border-slate-200">
-            <span class="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">
-              Pravidla Hokeje
-            </span>
-            <h1 class="text-3xl font-extrabold text-slate-900 mb-2">Hokejový Kvíz</h1>
-            <p class="text-slate-500 mb-8">Vyberte si délku testu a prověřte své znalosti:</p>
-
-            <div class="space-y-4">
-              <button onClick={() => startQuiz(10)} class="w-full flex items-center justify-between p-4 bg-slate-50 hover:bg-blue-50 border-2 border-slate-200 hover:border-blue-500 rounded-xl transition duration-200 group">
-                <span class="text-lg font-bold text-slate-800 group-hover:text-blue-600">Rychlý test</span>
-                <span class="bg-blue-100 text-blue-700 font-bold px-3 py-1 rounded-full text-sm">10 otázek</span>
-              </button>
-
-              <button onClick={() => startQuiz(20)} class="w-full flex items-center justify-between p-4 bg-slate-50 hover:bg-blue-50 border-2 border-slate-200 hover:border-blue-500 rounded-xl transition duration-200 group">
-                <span class="text-lg font-bold text-slate-800 group-hover:text-blue-600">Střední test</span>
-                <span class="bg-blue-100 text-blue-700 font-bold px-3 py-1 rounded-full text-sm">20 otázek</span>
-              </button>
-
-              <button onClick={() => startQuiz(40)} class="w-full flex items-center justify-between p-4 bg-slate-50 hover:bg-blue-50 border-2 border-slate-200 hover:border-blue-500 rounded-xl transition duration-200 group">
-                <span class="text-lg font-bold text-slate-800 group-hover:text-blue-600">Dlouhý test</span>
-                <span class="bg-blue-100 text-blue-700 font-bold px-3 py-1 rounded-full text-sm">40 otázek</span>
-              </button>
-            </div>
-          </div>
-        );
-      }
-
-      // -------------------------------------------------------------
-      // 2. OBRAZOVKA S VÝSLEDKY A PROHLÍŽENÍM CHYB
-      // -------------------------------------------------------------
-      if (isFinished) {
-        const { correctCount, total, percentage } = calculateResults();
-
-        return (
-          <div class="bg-white rounded-2xl shadow-xl p-8 text-center border border-slate-200">
-            <span class="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">
-              Konec testu
-            </span>
-            <h2 class="text-2xl font-black text-slate-900 mb-6">Výsledky Testu</h2>
-
-            {/* Skóre kruzích */}
-            <div class="w-36 h-36 mx-auto bg-gradient-to-br from-blue-50 to-blue-100 border-4 border-blue-600 rounded-full flex flex-col items-center justify-center mb-6 shadow-inner">
-              <span class="text-4xl font-black text-blue-600">{percentage}%</span>
-              <span class="text-xs font-semibold text-slate-500 uppercase">Úspěšnost</span>
-            </div>
-
-            <div class="flex justify-center gap-4 mb-6">
-              <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-2 rounded-xl flex flex-col">
-                <span class="text-xl font-bold">{correctCount}</span>
-                <span class="text-xs">Správně</span>
-              </div>
-              <div class="bg-rose-50 border border-rose-200 text-rose-800 px-4 py-2 rounded-xl flex flex-col">
-                <span class="text-xl font-bold">{total - correctCount}</span>
-                <span class="text-xs">Špatně / Vynecháno</span>
-              </div>
-            </div>
-
-            {!showReview ? (
-              <div class="space-y-3">
-                <button onClick={() => setShowReview(true)} class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition">
-                  🔍 Prohlédnout test a chyby
-                </button>
-                <button onClick={resetToMenu} class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition shadow-md shadow-blue-200">
-                  Zpět do hlavního menu
-                </button>
-              </div>
-            ) : (
-              <div class="text-left mt-6 border-t border-slate-100 pt-6">
-                <h3 class="text-lg font-bold text-slate-900 mb-4">Detailní přehled:</h3>
-                <div class="space-y-4 max-h-96 overflow-y-auto pr-2 mb-6">
-                  {activeQuestions.map((q, idx) => {
-                    const isCorrect = userAnswers[idx] === q.correctIndex;
-                    return (
-                      <div key={idx} class={`p-4 rounded-xl border ${isCorrect ? 'bg-emerald-50/50 border-emerald-200' : 'bg-rose-50/50 border-rose-200'}`}>
-                        <p class="font-bold text-slate-800 text-sm mb-1">{idx + 1}. {q.question}</p>
-                        <p class="text-xs text-slate-600">
-                          Vaše odpověď: <span class={isCorrect ? 'font-bold text-emerald-700' : 'font-bold text-rose-700'}>
-                            {userAnswers[idx] !== undefined ? q.options[userAnswers[idx]] : 'Nezodpovězeno'}
-                          </span>
-                        </p>
-                        {!isCorrect && (
-                          <p class="text-xs text-emerald-700 font-semibold mt-1">
-                            Správná odpověď: {q.options[q.correctIndex]}
-                          </p>
-                        )}
-                        {q.correctAnswer?.explanation && (
-                          <p class="text-xs text-slate-500 italic mt-2 bg-white/60 p-2 rounded">
-                            💡 {q.correctAnswer.explanation}
-                          </p>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-                <button onClick={resetToMenu} class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition">
-                  Zpět do hlavního menu
-                </button>
-              </div>
-            )}
-          </div>
-        );
-      }
-
-      // -------------------------------------------------------------
-      // 3. PRŮBĚH TESTU (Ukazatel postupu & otázka)
-      // -------------------------------------------------------------
-      const currentQ = activeQuestions[currentIndex];
-      const total = activeQuestions.length;
-      const answeredCount = Object.keys(userAnswers).length;
-
-      return (
-        <div class="bg-white rounded-2xl shadow-xl p-8 border border-slate-200">
-          {/* Hlavička a Ukazatel postupu */}
-          <header class="mb-6">
-            <div class="flex justify-between items-center mb-2">
-              <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase">
-                Test na {total} otázek
-              </span>
-              <button onClick={resetToMenu} class="text-xs text-slate-400 hover:text-rose-500 font-semibold transition">
-                Ukončit
-              </button>
-            </div>
-
-            <div class="flex justify-between items-baseline mb-1">
-              <h2 class="text-2xl font-black text-slate-900">
-                Otázka {currentIndex + 1} <span class="text-slate-400 text-lg font-normal">/ {total}</span>
-              </h2>
-              <span class="text-xs text-slate-500 font-medium">
-                Vyřešeno: <strong>{answeredCount}</strong> z {total}
-              </span>
-            </div>
-
-            {/* Vizuální Progress bar */}
-            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden mt-2">
-              <div 
-                class="h-full bg-gradient-to-r from-blue-500 to-blue-600 transition-all duration-300"
-                style={{ width: `${((currentIndex + 1) / total) * 100}%` }}
-              />
-            </div>
-          </header>
-
-          {/* Text otázky */}
-          <main class="mb-8">
-            <h3 class="text-lg font-semibold text-slate-800 mb-4 leading-snug">
-              {currentQ.question}
-            </h3>
-
-            {/* Možnosti */}
-            <div class="space-y-3">
-              {currentQ.options.map((option, idx) => {
-                const isSelected = userAnswers[currentIndex] === idx;
-                return (
-                  <button
-                    key={idx}
-                    onClick={() => handleSelectOption(idx)}
-                    class={`w-full flex items-center p-4 rounded-xl border-2 text-left transition duration-150 ${
-                      isSelected 
-                        ? 'border-blue-600 bg-blue-50 text-blue-900 font-medium shadow-sm' 
-                        : 'border-slate-100 hover:border-slate-200 bg-white text-slate-700'
-                    }`}
-                  >
-                    <span class={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold mr-3 shrink-0 ${
-                      isSelected ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500'
-                    }`}>
-                      {String.fromCharCode(65 + idx)}
-                    </span>
-                    <span>{option}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </main>
-
-          {/* Patička - Navigace Zpět / Další / Dokončit */}
-          <footer class="flex justify-between pt-4 border-t border-slate-100">
-            <button
-              onClick={() => setCurrentIndex(prev => prev - 1)}
-              disabled={currentIndex === 0}
-              class="px-5 py-2.5 rounded-xl font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 disabled:opacity-30 disabled:cursor-not-allowed transition"
-            >
-              ← Předchozí
-            </button>
-
-            {currentIndex === total - 1 ? (
-              <button
-                onClick={() => setIsFinished(true)}
-                class="px-6 py-2.5 rounded-xl font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-md shadow-emerald-200 transition"
-              >
-                Odeslat test 🏁
-              </button>
-            ) : (
-              <button
-                onClick={() => setCurrentIndex(prev => prev + 1)}
-                class="px-6 py-2.5 rounded-xl font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-200 transition"
-              >
-                Další →
-              </button>
-            )}
-          </footer>
+    <!-- Header -->
+    <header class="max-w-2xl w-full mx-auto flex justify-between items-center py-4 border-b border-slate-700">
+        <h1 class="text-xl font-bold tracking-wide text-blue-400">Rozhodčí Litvínov</h1>
+        <div id="score-tracker" class="text-sm font-semibold bg-slate-800 px-3 py-1 rounded-full border border-slate-700">
+            Skóre: <span id="score" class="text-green-400">0</span> / <span id="total">0</span>
         </div>
-      );
-    }
+    </header>
 
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<App />);
-  </script>
+    <!-- Main Quiz Container -->
+    <main class="max-w-2xl w-full mx-auto my-auto bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700">
+        
+        <!-- Question Meta -->
+        <div class="flex justify-between items-center text-xs text-slate-400 mb-2">
+            <span id="rule-ref" class="font-mono bg-slate-700 px-2 py-0.5 rounded text-blue-300">Pravidlo --</span>
+            <span id="situation-type" class="uppercase tracking-wider">Kategorie</span>
+        </div>
+
+        <!-- Question Text -->
+        <h2 id="question-text" class="text-lg font-medium text-slate-100 mb-6 leading-relaxed">
+            Načítání otázek...
+        </h2>
+
+        <!-- Options Container -->
+        <div id="options-container" class="space-y-3">
+            <!-- Dynamicky vkládané odpovědi -->
+        </div>
+
+        <!-- Explanation Card (Hidden by default) -->
+        <div id="explanation-card" class="mt-6 p-4 bg-slate-900 rounded-lg border border-slate-700 hidden">
+            <h3 class="font-bold text-sm text-slate-300 mb-1">Správná odpověď & Odůvodnění:</h3>
+            <p id="explanation-text" class="text-sm text-slate-400 leading-relaxed"></p>
+            <button id="next-btn" onclick="nextQuestion()" class="mt-4 w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg transition">
+                Další otázka &rarr;
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-slate-500 py-4">
+        Založeno na Oficiálních pravidlech IIHF a IIHF Situation Book.
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        let quizData = [];
+        let currentIndex = 0;
+        let score = 0;
+
+        // Načtení dat z externího JSON souboru
+        async function initQuiz() {
+            try {
+                const response = await fetch('questions.json');
+                const data = await response.json();
+                
+                // Náhodné promíchání otázek při každém načtení
+                quizData = data.sort(() => Math.random() - 0.5);
+                loadQuestion();
+            } catch (error) {
+                document.getElementById('question-text').textContent = 'Chyba při načítání databáze. Ujistěte se, že soubor questions.json existuje a je správně naformátován.';
+                console.error(error);
+            }
+        }
+
+        function loadQuestion() {
+            if (quizData.length === 0) return;
+
+            const current = quizData[currentIndex];
+            document.getElementById('rule-ref').textContent = current.rule;
+            document.getElementById('situation-type').textContent = current.category;
+            document.getElementById('question-text').textContent = current.question;
+            document.getElementById('explanation-card').classList.add('hidden');
+            
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+
+            current.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-3 rounded-lg border border-slate-700 bg-slate-700/50 hover:bg-slate-700 transition flex items-center justify-between group";
+                btn.onclick = () => selectOption(idx);
+                btn.innerHTML = `<span>${opt}</span>`;
+                container.appendChild(btn);
+            });
+
+            document.getElementById('total').textContent = quizData.length;
+            document.getElementById('score').textContent = score;
+        }
+
+        function selectOption(selectedIndex) {
+            const current = quizData[currentIndex];
+            const buttons = document.getElementById('options-container').children;
+
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = true;
+                if (i === current.correctIndex) {
+                    buttons[i].classList.add('bg-green-600/30', 'border-green-500', 'text-green-200');
+                } else if (i === selectedIndex) {
+                    buttons[i].classList.add('bg-red-600/30', 'border-red-500', 'text-red-200');
+                }
+            }
+
+            if (selectedIndex === current.correctIndex) {
+                score++;
+                document.getElementById('score').textContent = score;
+            }
+
+            document.getElementById('explanation-text').textContent = current.explanation;
+            document.getElementById('explanation-card').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentIndex = (currentIndex + 1) % quizData.length;
+            loadQuestion();
+        }
+
+        // Start aplikace
+        initQuiz();
+    </script>
 </body>
 </html>
