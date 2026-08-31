@@ -776,5 +776,42 @@
     ],
     "correctIndex": 1,
     "explanation": "Hráč, který neoprávněně opustí střídačku během potyčky nebo za účelem vyvolání potyčky, obdrží Větší trest a Trest do konce utkání (Pravidlo 70)."
+  },
+  {
+    "rule": "Situation Book 16.3",
+    "category": "Menší trest",
+    "question": "Týmu A je přiznaná branka v době, kdy má výhodu přesilové hry z důvodu menšího trestu pro protější tým. Bude odpykávaný trest kvůli přiznanému gólu zrušen?",
+    "options": [
+      "Ano, ale pouze pokud při přiznané brance skončil puk v brance.",
+      "Ne, odpykávaný trest nemůže být zrušen.",
+      "Ne, protože přiznaný gól ruší přestupek, za který byl gól přiznán",
+      "Ano, menší trest bude zrušen i při přiznaném gólu."
+    ],
+    "correctIndex": 3,
+    "explanation": "Přiznaný gól ruší odpykávaný trest. Pravidlo 16.2."
+  },
+  {
+    "rule": "Pravidlo 70.4",
+    "category": "Opuštění trestné lavice",
+    "question": "Kdy hlavní rozhodčí přeruší hru, pokud hráč opustí trestnou lavici před úplným odpykáním trestu?",
+    "options": [
+      "Po signalizaci dohlížitele trestů ihned přeruší hru.",
+      "Nechá pokračovat ve hře a počká do nejbližšího přerušení hry.",
+      "Po signalizaci dohlížitele trest přeruší hru, jakmile tým provinivšího se hráče získá puk pod kontrolou."
+    ],
+    "correctIndex": 2,
+    "explanation": "Hráč nesmí opustit dříve než uplyne jeho trest. Opustí-li hru bez vědomí trestoměřiče, bude mu uložen dvouminutový trest."
+  },
+  {
+    "rule": "Situation 60.4",
+    "category": "Vysoká hůl",
+    "question": "Čárový rozhodčí vidí, jak hůl hráče A20 zavadí o bradu hráče B6. Nedojde ke zranění a hlavní rozhodčí si incidentu nevšiml. Jak se má v této situaci postupovat?",
+    "options": [
+      "Nebude uložen žádný trest.",
+      "Uloží se MT za vysokou hůl.",
+      "Uloží se dvojitý MT za vysokou hůl."
+    ],
+    "correctIndex": 0,
+    "explanation": "Tato situace bude považována jako přehlédnutý faul, který však postřehl čárový rozhodčí."
   }
 ]
