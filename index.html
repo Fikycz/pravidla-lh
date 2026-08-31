@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kvíz z pravidiel a situací IIHF</title>
+    <title>Kvíz z pravídel a situací IIHF</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between p-4 font-sans">
@@ -23,27 +23,27 @@
         <div id="menu-card" class="space-y-4 text-center">
             <h2 class="text-xl font-bold text-slate-100 mb-2">Vyberte délku testu</h2>
             <div class="grid gap-3">
-                <button onclick="startQuiz(10)" class="w-full bg-slate-700 hover:bg-slate-600 p-3 rounded-lg border border-slate-600 text-left flex justify-between items-center font-medium transition">
+                <button onclick="startQuiz(10)" class="w-full bg-slate-700 hover:bg-slate-600 p-3.5 rounded-lg border border-slate-600 text-left flex justify-between items-center font-medium transition">
                     <span>Rychlý test</span>
-                    <span class="text-xs bg-blue-600 px-2 py-1 rounded font-bold">10 otázek</span>
+                    <span class="text-xs bg-blue-600 px-2.5 py-1 rounded font-bold text-white">10 otázek</span>
                 </button>
-                <button onclick="startQuiz(20)" class="w-full bg-slate-700 hover:bg-slate-600 p-3 rounded-lg border border-slate-600 text-left flex justify-between items-center font-medium transition">
+                <button onclick="startQuiz(20)" class="w-full bg-slate-700 hover:bg-slate-600 p-3.5 rounded-lg border border-slate-600 text-left flex justify-between items-center font-medium transition">
                     <span>Střední test</span>
-                    <span class="text-xs bg-blue-600 px-2 py-1 rounded font-bold">20 otázek</span>
+                    <span class="text-xs bg-blue-600 px-2.5 py-1 rounded font-bold text-white">20 otázek</span>
                 </button>
-                <button onclick="startQuiz(40)" class="w-full bg-slate-700 hover:bg-slate-600 p-3 rounded-lg border border-slate-600 text-left flex justify-between items-center font-medium transition">
-                    <span>Dlouhý test</span>
-                    <span class="text-xs bg-blue-600 px-2 py-1 rounded font-bold">40 otázek</span>
+                <button onclick="startQuiz(9999)" class="w-full bg-slate-700 hover:bg-slate-600 p-3.5 rounded-lg border border-slate-600 text-left flex justify-between items-center font-medium transition">
+                    <span>Kompletní test</span>
+                    <span id="max-questions-badge" class="text-xs bg-emerald-600 px-2.5 py-1 rounded font-bold text-white">Všechny</span>
                 </button>
             </div>
-            <div id="status-msg" class="text-xs text-slate-400 pt-2">Načítání databáze...</div>
+            <div id="status-msg" class="text-xs text-slate-400 pt-2">Načítání otázek z questions.json...</div>
         </div>
 
         <!-- 2. PRŮBĚH TESTU -->
         <div id="quiz-card" class="hidden">
             <div class="flex justify-between items-center text-xs text-slate-400 mb-2">
                 <span id="rule-ref" class="font-mono bg-slate-700 px-2 py-0.5 rounded text-blue-300">Pravidlo --</span>
-                <span id="situation-type" class="uppercase tracking-wider">Kategorie</span>
+                <span id="situation-type" class="uppercase tracking-wider font-semibold text-slate-300">Kategorie</span>
             </div>
 
             <h2 id="question-text" class="text-lg font-medium text-slate-100 mb-6 leading-relaxed">
@@ -53,13 +53,13 @@
             <div id="options-container" class="space-y-3 mb-6"></div>
 
             <div class="flex justify-between border-t border-slate-700 pt-4">
-                <button id="prev-btn" onclick="prevQuestion()" disabled class="bg-slate-700 disabled:opacity-30 px-4 py-2 rounded text-sm font-semibold">
+                <button id="prev-btn" onclick="prevQuestion()" disabled class="bg-slate-700 hover:bg-slate-600 disabled:opacity-30 px-4 py-2 rounded text-sm font-semibold transition">
                     &larr; Předchozí
                 </button>
-                <button id="next-btn" onclick="nextQuestion()" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded text-sm font-semibold">
+                <button id="next-btn" onclick="nextQuestion()" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded text-sm font-semibold transition">
                     Další &rarr;
                 </button>
-                <button id="submit-btn" onclick="finishQuiz()" class="hidden bg-emerald-600 hover:bg-emerald-500 px-4 py-2 rounded text-sm font-semibold">
+                <button id="submit-btn" onclick="finishQuiz()" class="hidden bg-emerald-600 hover:bg-emerald-500 px-4 py-2 rounded text-sm font-semibold transition">
                     Odeslat test 🏁
                 </button>
             </div>
@@ -89,54 +89,48 @@
     </footer>
 
     <script>
-        // Záložní otázky pro případ, že se JSON načítá lokálně z disku bez serveru
-        const fallbackQuestions = [
-            {
-                rule: "Pravidlo 63",
-                category: "Zdržování hry",
-                question: "Brankář úmyslně posune brankovou konstrukci v průběhu samostatného nájezdu. Jaké je správné rozhodnutí?",
-                options: ["Trestné střílení", "Technický gól", "Menší trest pro brankáře", "Bez trestu"],
-                correctIndex: 1,
-                explanation: "Pokud brankář úmyslně posune branku během samostatného nájezdu, přiznává se technický gól."
-            },
-            {
-                rule: "Pravidlo 152",
-                category: "Kicking",
-                question: "Hráč úmyslně kopne puk nohou přímo do soupeřovy branky. Platí gól?",
-                options: ["Ano, gól platí", "Ne, gól neplatí", "Platí jen pokud se dotkl hokejky", "Rozhodne videorozhodčí"],
-                correctIndex: 1,
-                explanation: "Gól nemůže být vstřelen přímým kopnutím puku útočícím hráčem."
-            }
-        ];
-
         let rawData = [];
         let activeQuestions = [];
         let currentIndex = 0;
         let userAnswers = {};
 
-        async function initQuiz() {
+        // Načtení externího souboru questions.json z vaší složky v GitHubu
+        async function loadQuestionsFromJSON() {
             const statusEl = document.getElementById('status-msg');
+            const maxBadge = document.getElementById('max-questions-badge');
+            
             try {
-                const res = await fetch('questions.json');
-                if (!res.ok) throw new Error();
-                rawData = await res.json();
-                statusEl.textContent = `Databáze načtena (${rawData.length} otázek připraveno).`;
-                statusEl.className = "text-xs text-emerald-400 pt-2";
-            } catch (e) {
-                // Pokud fetch selže (např. lokální spuštění bez HTTP serveru), použijeme data
-                rawData = fallbackQuestions;
-                statusEl.textContent = "Spuštěno v lokálním režimu (záložní data).";
-                statusEl.className = "text-xs text-amber-400 pt-2";
+                // Přidaný timestamp zabraňuje kešování staré verze souboru v prohlížeči
+                const response = await fetch('./questions.json?v=' + new Date().getTime());
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP chyba ${response.status}: Soubor questions.json nebyl nalezen.`);
+                }
+                
+                rawData = await response.json();
+
+                if (!Array.isArray(rawData) || rawData.length === 0) {
+                    throw new Error('Soubor questions.json je prázdný nebo nemá správný formát.');
+                }
+
+                statusEl.textContent = `Úspěšně načteno ${rawData.length} otázek ze souboru questions.json.`;
+                statusEl.className = "text-xs text-emerald-400 pt-2 font-medium";
+                maxBadge.textContent = `${rawData.length} otázek`;
+
+            } catch (error) {
+                console.error("Chyba načítání:", error);
+                statusEl.textContent = `Chyba načítání: ${error.message}`;
+                statusEl.className = "text-xs text-rose-400 pt-2 font-medium";
             }
         }
 
         function startQuiz(count) {
             if (!rawData || rawData.length === 0) {
-                alert("Žádné otázky nejsou k dispozici.");
+                alert("Nelze spustit test: Není načten žádný soubor questions.json.");
                 return;
             }
 
-            // Zamíchání
+            // Zamíchání načtených otázek ze souboru
             const shuffled = [...rawData].sort(() => Math.random() - 0.5);
             activeQuestions = shuffled.slice(0, Math.min(count, shuffled.length));
             
@@ -153,8 +147,8 @@
         function loadQuestion() {
             const current = activeQuestions[currentIndex];
             
-            document.getElementById('rule-ref').textContent = current.rule || 'Pravidlo --';
-            document.getElementById('situation-type').textContent = current.category || 'IIHF';
+            document.getElementById('rule-ref').textContent = current.rule || 'Pravidlo IIHF';
+            document.getElementById('situation-type').textContent = current.category || '';
             document.getElementById('question-text').textContent = current.question;
             document.getElementById('progress-text').textContent = `${currentIndex + 1} / ${activeQuestions.length}`;
 
@@ -214,12 +208,12 @@
                 if (isCorrect) score++;
 
                 const reviewBox = document.createElement('div');
-                reviewBox.className = `p-3 rounded border text-xs ${isCorrect ? 'bg-emerald-950/40 border-emerald-700' : 'bg-rose-950/40 border-rose-700'}`;
+                reviewBox.className = `p-3.5 rounded-lg border text-xs ${isCorrect ? 'bg-emerald-950/40 border-emerald-700' : 'bg-rose-950/40 border-rose-700'}`;
                 reviewBox.innerHTML = `
                     <div class="font-bold text-slate-200 mb-1">${idx + 1}. ${q.question}</div>
-                    <div class="${isCorrect ? 'text-emerald-400' : 'text-rose-400'}">Vaše odpověď: ${userAnswers[idx] !== undefined ? q.options[userAnswers[idx]] : 'Nezodpovězeno'}</div>
-                    ${!isCorrect ? `<div class="text-emerald-400 mt-0.5">Správná odpověď: ${q.options[q.correctIndex]}</div>` : ''}
-                    ${q.explanation ? `<div class="text-slate-400 italic mt-1 bg-slate-900/50 p-1.5 rounded">💡 ${q.explanation}</div>` : ''}
+                    <div class="${isCorrect ? 'text-emerald-400' : 'text-rose-400'} font-medium">Vaše odpověď: ${userAnswers[idx] !== undefined ? q.options[userAnswers[idx]] : 'Nezodpovězeno'}</div>
+                    ${!isCorrect ? `<div class="text-emerald-400 font-medium mt-0.5">Správná odpověď: ${q.options[q.correctIndex]}</div>` : ''}
+                    ${q.explanation ? `<div class="text-slate-400 italic mt-2 bg-slate-900/60 p-2 rounded border border-slate-800">💡 ${q.explanation}</div>` : ''}
                 `;
                 reviewList.appendChild(reviewBox);
             });
@@ -235,8 +229,8 @@
             document.getElementById('menu-card').classList.remove('hidden');
         }
 
-        // Automatické spuštění
-        window.onload = initQuiz;
+        // Automatické načtení při otevření stránky
+        window.onload = loadQuestionsFromJSON;
     </script>
 </body>
 </html>
