@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kvíz z pravidel a situací IIHF</title>
+    <title>Kvíz z pravidiel a situací IIHF</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between p-4 font-sans">
@@ -23,19 +23,20 @@
         <div id="menu-card" class="space-y-4 text-center">
             <h2 class="text-xl font-bold text-slate-100 mb-2">Vyberte délku testu</h2>
             <div class="grid gap-3">
-                <button onclick="startQuiz(10)" class="w-full bg-slate-700 hover:bg-slate-600 p-3 rounded-lg border border-slate-600 text-left flex justify-between items-center font-medium">
+                <button onclick="startQuiz(10)" class="w-full bg-slate-700 hover:bg-slate-600 p-3 rounded-lg border border-slate-600 text-left flex justify-between items-center font-medium transition">
                     <span>Rychlý test</span>
-                    <span class="text-xs bg-blue-600 px-2 py-1 rounded">10 otázek</span>
+                    <span class="text-xs bg-blue-600 px-2 py-1 rounded font-bold">10 otázek</span>
                 </button>
-                <button onclick="startQuiz(20)" class="w-full bg-slate-700 hover:bg-slate-600 p-3 rounded-lg border border-slate-600 text-left flex justify-between items-center font-medium">
+                <button onclick="startQuiz(20)" class="w-full bg-slate-700 hover:bg-slate-600 p-3 rounded-lg border border-slate-600 text-left flex justify-between items-center font-medium transition">
                     <span>Střední test</span>
-                    <span class="text-xs bg-blue-600 px-2 py-1 rounded">20 otázek</span>
+                    <span class="text-xs bg-blue-600 px-2 py-1 rounded font-bold">20 otázek</span>
                 </button>
-                <button onclick="startQuiz(40)" class="w-full bg-slate-700 hover:bg-slate-600 p-3 rounded-lg border border-slate-600 text-left flex justify-between items-center font-medium">
+                <button onclick="startQuiz(40)" class="w-full bg-slate-700 hover:bg-slate-600 p-3 rounded-lg border border-slate-600 text-left flex justify-between items-center font-medium transition">
                     <span>Dlouhý test</span>
-                    <span class="text-xs bg-blue-600 px-2 py-1 rounded">40 otázek</span>
+                    <span class="text-xs bg-blue-600 px-2 py-1 rounded font-bold">40 otázek</span>
                 </button>
             </div>
+            <div id="status-msg" class="text-xs text-slate-400 pt-2">Načítání databáze...</div>
         </div>
 
         <!-- 2. PRŮBĚH TESTU -->
@@ -46,36 +47,36 @@
             </div>
 
             <h2 id="question-text" class="text-lg font-medium text-slate-100 mb-6 leading-relaxed">
-                Načítání otázek...
+                Načítání...
             </h2>
 
             <div id="options-container" class="space-y-3 mb-6"></div>
 
             <div class="flex justify-between border-t border-slate-700 pt-4">
-                <button id="prev-btn" onclick="prevQuestion()" disabled class="bg-slate-700 disabled:opacity-40 px-4 py-2 rounded text-sm font-semibold">
+                <button id="prev-btn" onclick="prevQuestion()" disabled class="bg-slate-700 disabled:opacity-30 px-4 py-2 rounded text-sm font-semibold">
                     &larr; Předchozí
                 </button>
                 <button id="next-btn" onclick="nextQuestion()" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded text-sm font-semibold">
                     Další &rarr;
                 </button>
-                <button id="submit-btn" onclick="finishQuiz()" class="hidden bg-green-600 hover:bg-green-500 px-4 py-2 rounded text-sm font-semibold">
+                <button id="submit-btn" onclick="finishQuiz()" class="hidden bg-emerald-600 hover:bg-emerald-500 px-4 py-2 rounded text-sm font-semibold">
                     Odeslat test 🏁
                 </button>
             </div>
         </div>
 
-        <!-- 3. VÝSLEDKY & KONTROLA CHYB -->
+        <!-- 3. VÝSLEDKY & CHYBY -->
         <div id="results-card" class="hidden space-y-4">
             <h2 class="text-xl font-bold text-slate-100 text-center">Vyhodnocení testu</h2>
             
             <div class="bg-slate-900 p-4 rounded-lg text-center space-y-1 border border-slate-700">
-                <div id="final-score" class="text-3xl font-black text-green-400">0 %</div>
+                <div id="final-score" class="text-4xl font-black text-emerald-400">0 %</div>
                 <p id="final-stats" class="text-sm text-slate-400">0 ze 0 správně</p>
             </div>
 
             <div id="review-list" class="space-y-3 max-h-80 overflow-y-auto pr-1"></div>
 
-            <button onclick="location.reload()" class="w-full bg-blue-600 hover:bg-blue-500 py-2.5 rounded font-semibold transition">
+            <button onclick="resetMenu()" class="w-full bg-blue-600 hover:bg-blue-500 py-2.5 rounded font-semibold transition">
                 Zkusit nový test
             </button>
         </div>
@@ -88,24 +89,54 @@
     </footer>
 
     <script>
+        // Záložní otázky pro případ, že se JSON načítá lokálně z disku bez serveru
+        const fallbackQuestions = [
+            {
+                rule: "Pravidlo 63",
+                category: "Zdržování hry",
+                question: "Brankář úmyslně posune brankovou konstrukci v průběhu samostatného nájezdu. Jaké je správné rozhodnutí?",
+                options: ["Trestné střílení", "Technický gól", "Menší trest pro brankáře", "Bez trestu"],
+                correctIndex: 1,
+                explanation: "Pokud brankář úmyslně posune branku během samostatného nájezdu, přiznává se technický gól."
+            },
+            {
+                rule: "Pravidlo 152",
+                category: "Kicking",
+                question: "Hráč úmyslně kopne puk nohou přímo do soupeřovy branky. Platí gól?",
+                options: ["Ano, gól platí", "Ne, gól neplatí", "Platí jen pokud se dotkl hokejky", "Rozhodne videorozhodčí"],
+                correctIndex: 1,
+                explanation: "Gól nemůže být vstřelen přímým kopnutím puku útočícím hráčem."
+            }
+        ];
+
         let rawData = [];
         let activeQuestions = [];
         let currentIndex = 0;
         let userAnswers = {};
 
-        // Načtení externího JSON souboru
         async function initQuiz() {
+            const statusEl = document.getElementById('status-msg');
             try {
                 const res = await fetch('questions.json');
+                if (!res.ok) throw new Error();
                 rawData = await res.json();
+                statusEl.textContent = `Databáze načtena (${rawData.length} otázek připraveno).`;
+                statusEl.className = "text-xs text-emerald-400 pt-2";
             } catch (e) {
-                document.getElementById('question-text').textContent = 'Chyba načítání questions.json!';
+                // Pokud fetch selže (např. lokální spuštění bez HTTP serveru), použijeme data
+                rawData = fallbackQuestions;
+                statusEl.textContent = "Spuštěno v lokálním režimu (záložní data).";
+                statusEl.className = "text-xs text-amber-400 pt-2";
             }
         }
 
-        // Spuštění vybraného testu
         function startQuiz(count) {
-            if (!rawData.length) return;
+            if (!rawData || rawData.length === 0) {
+                alert("Žádné otázky nejsou k dispozici.");
+                return;
+            }
+
+            // Zamíchání
             const shuffled = [...rawData].sort(() => Math.random() - 0.5);
             activeQuestions = shuffled.slice(0, Math.min(count, shuffled.length));
             
@@ -113,6 +144,7 @@
             currentIndex = 0;
 
             document.getElementById('menu-card').classList.add('hidden');
+            document.getElementById('results-card').classList.add('hidden');
             document.getElementById('quiz-card').classList.remove('hidden');
             
             loadQuestion();
@@ -122,7 +154,7 @@
             const current = activeQuestions[currentIndex];
             
             document.getElementById('rule-ref').textContent = current.rule || 'Pravidlo --';
-            document.getElementById('situation-type').textContent = current.category || '';
+            document.getElementById('situation-type').textContent = current.category || 'IIHF';
             document.getElementById('question-text').textContent = current.question;
             document.getElementById('progress-text').textContent = `${currentIndex + 1} / ${activeQuestions.length}`;
 
@@ -133,8 +165,8 @@
                 const btn = document.createElement('button');
                 const isSelected = userAnswers[currentIndex] === idx;
                 
-                btn.className = `w-full text-left p-3 rounded-lg border transition flex items-center justify-between ${
-                    isSelected ? 'bg-blue-600/40 border-blue-400 text-white' : 'border-slate-700 bg-slate-700/50 hover:bg-slate-700'
+                btn.className = `w-full text-left p-3.5 rounded-lg border transition flex items-center justify-between ${
+                    isSelected ? 'bg-blue-600/40 border-blue-400 text-white font-semibold' : 'border-slate-700 bg-slate-700/50 hover:bg-slate-700 text-slate-200'
                 }`;
                 btn.onclick = () => {
                     userAnswers[currentIndex] = idx;
@@ -144,7 +176,7 @@
                 container.appendChild(btn);
             });
 
-            document.getElementById('prev-btn').disabled = currentIndex === 0;
+            document.getElementById('prev-btn').disabled = (currentIndex === 0);
 
             if (currentIndex === activeQuestions.length - 1) {
                 document.getElementById('next-btn').classList.add('hidden');
@@ -182,12 +214,12 @@
                 if (isCorrect) score++;
 
                 const reviewBox = document.createElement('div');
-                reviewBox.className = `p-3 rounded border text-xs ${isCorrect ? 'bg-green-950/30 border-green-700' : 'bg-red-950/30 border-red-700'}`;
+                reviewBox.className = `p-3 rounded border text-xs ${isCorrect ? 'bg-emerald-950/40 border-emerald-700' : 'bg-rose-950/40 border-rose-700'}`;
                 reviewBox.innerHTML = `
                     <div class="font-bold text-slate-200 mb-1">${idx + 1}. ${q.question}</div>
-                    <div class="${isCorrect ? 'text-green-400' : 'text-red-400'}">Vaše odpověď: ${userAnswers[idx] !== undefined ? q.options[userAnswers[idx]] : 'Nezodpovězeno'}</div>
-                    ${!isCorrect ? `<div class="text-green-400 mt-0.5">Správná odpověď: ${q.options[q.correctIndex]}</div>` : ''}
-                    ${q.explanation ? `<div class="text-slate-400 italic mt-1">${q.explanation}</div>` : ''}
+                    <div class="${isCorrect ? 'text-emerald-400' : 'text-rose-400'}">Vaše odpověď: ${userAnswers[idx] !== undefined ? q.options[userAnswers[idx]] : 'Nezodpovězeno'}</div>
+                    ${!isCorrect ? `<div class="text-emerald-400 mt-0.5">Správná odpověď: ${q.options[q.correctIndex]}</div>` : ''}
+                    ${q.explanation ? `<div class="text-slate-400 italic mt-1 bg-slate-900/50 p-1.5 rounded">💡 ${q.explanation}</div>` : ''}
                 `;
                 reviewList.appendChild(reviewBox);
             });
@@ -197,7 +229,14 @@
             document.getElementById('final-stats').textContent = `Správně ${score} z ${activeQuestions.length} otázek`;
         }
 
-        initQuiz();
+        function resetMenu() {
+            document.getElementById('results-card').classList.add('hidden');
+            document.getElementById('quiz-card').classList.add('hidden');
+            document.getElementById('menu-card').classList.remove('hidden');
+        }
+
+        // Automatické spuštění
+        window.onload = initQuiz;
     </script>
 </body>
 </html>
