@@ -506,4 +506,80 @@
     "correctIndex": 1,
     "explanation": "V prodloužení 3 na 3 nesmí klesnout počet hráčů jednoho týmu pod 3. Při vyloučení hráče týmu A se tedy nepřemísťuje hráč pryč z ledu pro snížení na 2, ale tým B dostane 4. hráče (přesilová hra 4 na 3)."
   },
+  {
+    "rule": "Situation book 78.15",
+    "category": "Signalizované tresty",
+    "question": "Těsně před koncem utkání Tým B odvolá brankáře a hraje s šesti hráči v poli. Tým A získá puk ve svém obranném pásmu a vyhodí ho vysokým obloukem do středního pásma. Zatím co je puk ve vzduchu, spáchá hráč Týmu A faul a hlavní rozhodčí signalizuje zvednutím ruky trest. Puk mezitím doletí až do prázdné brány Týmu B. Bude gól uznán?",
+    "options": [
+      "Gól bude uznán, jelikož puk přešel brankovou čáru před přerušením hry.",
+      "Ne, při signalizovaném trestu nemůže provinivší se tým vstřelit gól."
+    ],
+    "correctIndex": 1,
+    "explanation": "Při signalizovaném trestu nemůže provinivší se tým skórovat. Gól by byl uznán, kdyby puk tečoval hráč z Týmu B. Tato situace je popsána v pravidlu 78.5"
+  },
+  {
+    "rule": "Situation Book 58.2",
+    "category": "Bodnutí koncem hole",
+    "question": "Hráči A23 a B16 mají mezi sebou v přerušené hře slovní přestřelku. Při odchodu se hráč A23 pokusí bodnout soupeře koncem hole ale mine. Čárový rozhodčí tento incident zaznamenal. Jaký bude jeho postup?",
+    "options": [
+      "Čárový rozhodčí obeznámí hlavního, který uloží hráči A23 dvojitý MT za pokus o bodnutí koncem hole.",
+      "Čárový rozhodčí může uložit dvojitý MT za pokus o bodnutí koncem hole.",
+      "Čárový rozhodčí může ohlásit jakýkoli přestupek, který ohrozí bezpečnost hráčů.",
+      "Čárový rozhodčí může přestupek nahlásit v případě dvojitého MT za vysokou hůl, nebo pokud by k přestupku došlo v potyčce."
+    ],
+    "correctIndex": 3,
+    "explanation": "V prodloužení 3 na 3 nesmí klesnout počet hráčů jednoho týmu pod 3. Při vyloučení hráče týmu A se tedy nepřemísťuje hráč pryč z ledu pro snížení na 2, ale tým B dostane 4. hráče (přesilová hra 4 na 3)."
+  },
+  {
+    "rule": "Situation Book 55.2",
+    "category": "Fauly holí",
+    "question": "Hráč A23 je v samostatném úniku zahákován protihráčem a upadne na led. Volný puk dojíždí spoluhráč který se dostane do zakončení. Jak bude rozhodčí postupovat?",
+    "options": [
+      "Hru nechá pokračovat, spoluhráč zakončil.",
+      "Uloží MT za hákování",
+      "Nařídí trestné střílení",
+      "Uloží MT za hákování a nařídí trestné střílení"
+    ],
+    "correctIndex": 1,
+    "explanation": "Jelikož nebyla zmařena šance zakončit, nebude nařízeno trestné střílení. Avšak se MT za hákování stále uloží dle pravidla 55.2."
+  },
+  {
+    "rule": "Pravidlo 73.2",
+    "category": "Tým odmítá pokračovat ve hře",
+    "question": "Jaký trest uloží rozhodčí, pokud tým odmítá hrát, i když jsou oba týmy nastoupeny na ledě a byl vyzván k pokračování ve hře?",
+    "options": [
+      "Uloží OK trenérovi.",
+      "Ukončí utkání a ohlásí tento přestupek disciplinární komisi.",
+      "Uloží ML za zdržování hry.",
+      "Žádný, ale varuje kapitána týmu a poskytne mu 15 sekund k zahájení hry."
+    ],
+    "correctIndex": 3,
+    "explanation": "Pokud jsou oba týmy na ledě a jeden z nich odmítne hrát a hlavní rozhodčí ho k tomu vyzve, varuje hlavní rozhodčí kapitána a poskytne týmu, který odmítá hrát 15 sekund k zahájení hry nebo k pokračování ve hře. Pravidlo 73.2."
+  },
+  {
+    "rule": "Situation book 24.20",
+    "category": "Trestné střílení",
+    "question": "Proti Týmu B je nařízeno trestné střílení. Tým B se před nájezdem rozhodne vystřídat brankáře. Kdy se může původní brankář vrátit zpět do hry?",
+    "options": [
+      "Při nejbližším přerušení hry po trestném střílení.",
+      "Ihned po provedení trestného stříelní, ale pouze poku byl vstřelen gól.",
+      "Při druhém přerušení po provedení trestného střílení.",
+      "Ihned po provedení trestného střílení, bez ohledu na výsledek."
+    ],
+    "correctIndex": 0,
+    "explanation": "Náhradní brankář je povinen zůstat ve hře do nejbližšího přerušení hry po provedení trestného střílení. Popsáno v pravidle 24.2."
+  },
+  {
+    "rule": "Situation Book 19.3",
+    "category": "Krácení trestů",
+    "question": "Na konci první třetiny hraje Tým A v oslabení z důvodu menšího trestu, který pokračuje do druhé třetiny. Těsně před sirénou je signalizován menší trest pro hráče Týmu B, který je uložen v čase 0:00. Při návratu na led na začátku druhé třetiny je jinému hráči Týmu A uložen menší trest za nesportovní chování. Kolik hráčů bude na ledě na začátku druhé třetiny?",
+    "options": [
+      "Oba tresty se zaznamenají na časomíru, bude se hrát 4:4",
+      "Tým A bude hrát na začátku třetiny v oslabení 3:5",
+      "Tým A bude hrát na začátku třetiny v oslabení 4:5",
+      "Hraje se 5:5"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hráči Týmu A byl uložen MT který končí až v druhé třetině. Avšak v čase 0:00 byl hráči Týmu B uložen MT. Po úpravě ledu a začátkem druhé třetiny byl hráči Týmu A uložen MT za nesportovní chování, tudíž se tresty vykrátí (byly uloženy ve stejném čase). Hra tedy bude pokračovat 4:5 s původním trestem pro Tým A. Pravidlo 19.1"
+  }
 ]
