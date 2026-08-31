@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kvíz z pravidel a situací IIHF</title>
+    <title>Kvíz z pravidel a situací IIHF - Rozhodčí Litvínov</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between p-4 font-sans">
@@ -11,38 +11,148 @@
     <!-- Header -->
     <header class="max-w-2xl w-full mx-auto flex justify-between items-center py-4 border-b border-slate-700">
         <h1 class="text-xl font-bold tracking-wide text-blue-400">Rozhodčí Litvínov</h1>
-        <div id="score-tracker" class="text-sm font-semibold bg-slate-800 px-3 py-1 rounded-full border border-slate-700">
-            Skóre: <span id="score" class="text-green-400">0</span> / <span id="total">0</span>
+        <div id="quiz-badge" class="text-xs font-semibold bg-slate-800 text-slate-400 px-3 py-1 rounded-full border border-slate-700">
+            Pravidla IIHF
         </div>
     </header>
 
     <!-- Main Quiz Container -->
     <main class="max-w-2xl w-full mx-auto my-auto bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-700">
         
-        <!-- Question Meta -->
-        <div class="flex justify-between items-center text-xs text-slate-400 mb-2">
-            <span id="rule-ref" class="font-mono bg-slate-700 px-2 py-0.5 rounded text-blue-300">Pravidlo --</span>
-            <span id="situation-type" class="uppercase tracking-wider">Kategorie</span>
+        <!-- 1. HLAVNÍ MENU -->
+        <div id="menu-screen" class="text-center space-y-6">
+            <div>
+                <span class="inline-block bg-blue-900/60 text-blue-400 text-xs font-bold px-3 py-1 rounded-full border border-blue-700/50 uppercase tracking-wider mb-2">
+                    Oficiální test IIHF
+                </span>
+                <h2 class="text-2xl font-black text-slate-100">Kvíz z pravidel a situací</h2>
+                <p class="text-slate-400 text-sm mt-1">Zvolte si počet otázek a prověřte své znalosti:</p>
+            </div>
+
+            <div class="space-y-3">
+                <button onclick="startQuiz(10)" class="w-full flex items-center justify-between p-4 bg-slate-700/50 hover:bg-slate-700 border border-slate-600 hover:border-blue-500 rounded-xl transition text-left group">
+                    <div>
+                        <div class="font-bold text-slate-200 group-hover:text-blue-400">Rychlý test</div>
+                        <div class="text-xs text-slate-400">Vhodné na rychlé zopakování</div>
+                    </div>
+                    <span class="bg-blue-600/20 text-blue-300 font-bold px-3 py-1 rounded-lg text-xs border border-blue-500/30">10 otázek</span>
+                </button>
+
+                <button onclick="startQuiz(20)" class="w-full flex items-center justify-between p-4 bg-slate-700/50 hover:bg-slate-700 border border-slate-600 hover:border-blue-500 rounded-xl transition text-left group">
+                    <div>
+                        <div class="font-bold text-slate-200 group-hover:text-blue-400">Střední test</div>
+                        <div class="text-xs text-slate-400">Standardní prověrka pravidel</div>
+                    </div>
+                    <span class="bg-blue-600/20 text-blue-300 font-bold px-3 py-1 rounded-lg text-xs border border-blue-500/30">20 otázek</span>
+                </button>
+
+                <button onclick="startQuiz(40)" class="w-full flex items-center justify-between p-4 bg-slate-700/50 hover:bg-slate-700 border border-slate-600 hover:border-blue-500 rounded-xl transition text-left group">
+                    <div>
+                        <div class="font-bold text-slate-200 group-hover:text-blue-400">Dlouhý test</div>
+                        <div class="text-xs text-slate-400">Důkladná prověrka situací</div>
+                    </div>
+                    <span class="bg-blue-600/20 text-blue-300 font-bold px-3 py-1 rounded-lg text-xs border border-blue-500/30">40 otázek</span>
+                </button>
+            </div>
         </div>
 
-        <!-- Question Text -->
-        <h2 id="question-text" class="text-lg font-medium text-slate-100 mb-6 leading-relaxed">
-            Načítání otázek...
-        </h2>
+        <!-- 2. OBRAZOVKA PRŮBĚHU TESTU -->
+        <div id="quiz-screen" class="hidden">
+            <!-- Progress Top -->
+            <div class="flex justify-between items-center text-xs text-slate-400 mb-2">
+                <span id="rule-ref" class="font-mono bg-slate-700 px-2 py-0.5 rounded text-blue-300">Pravidlo --</span>
+                <button onclick="resetToMenu()" class="text-slate-400 hover:text-red-400 transition font-medium">Ukončit test</button>
+            </div>
 
-        <!-- Options Container -->
-        <div id="options-container" class="space-y-3">
-            <!-- Dynamicky vkládané odpovědi -->
+            <!-- Question Counter & Stats -->
+            <div class="flex justify-between items-baseline mb-2">
+                <h2 id="question-counter" class="text-xl font-bold text-slate-100">
+                    Otázka 1 <span id="total-count" class="text-slate-500 text-sm font-normal">/ 10</span>
+                </h2>
+                <span class="text-xs text-slate-400">
+                    Vyřešeno: <strong id="answered-count" class="text-blue-400">0</strong> z <span id="total-stats">10</span>
+                </span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full h-1.5 bg-slate-700 rounded-full overflow-hidden mb-6">
+                <div id="progress-bar" class="h-full bg-blue-500 transition-all duration-300" style="width: 0%"></div>
+            </div>
+
+            <!-- Question Text -->
+            <h3 id="question-text" class="text-base font-medium text-slate-100 mb-6 leading-relaxed">
+                Načítání...
+            </h3>
+
+            <!-- Options Container -->
+            <div id="options-container" class="space-y-3 mb-6">
+                <!-- Dynamické možnosti -->
+            </div>
+
+            <!-- Footer Controls -->
+            <div class="flex justify-between items-center pt-4 border-t border-slate-700">
+                <button id="prev-btn" onclick="prevQuestion()" disabled class="px-4 py-2 bg-slate-700 hover:bg-slate-600 disabled:opacity-30 disabled:hover:bg-slate-700 text-slate-200 font-semibold rounded-lg text-sm transition">
+                    ← Předchozí
+                </button>
+
+                <button id="next-btn" onclick="nextQuestion()" class="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg text-sm transition shadow-lg shadow-blue-600/30">
+                    Další →
+                </button>
+
+                <button id="submit-btn" onclick="finishQuiz()" class="hidden px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-lg text-sm transition shadow-lg shadow-emerald-600/30">
+                    Odeslat test 🏁
+                </button>
+            </div>
         </div>
 
-        <!-- Explanation Card (Hidden by default) -->
-        <div id="explanation-card" class="mt-6 p-4 bg-slate-900 rounded-lg border border-slate-700 hidden">
-            <h3 class="font-bold text-sm text-slate-300 mb-1">Správná odpověď & Odůvodnění:</h3>
-            <p id="explanation-text" class="text-sm text-slate-400 leading-relaxed"></p>
-            <button id="next-btn" onclick="nextQuestion()" class="mt-4 w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg transition">
-                Další otázka &rarr;
-            </button>
+        <!-- 3. OBRAZOVKA VÝSLEDKŮ -->
+        <div id="results-screen" class="hidden text-center space-y-6">
+            <div>
+                <span class="inline-block bg-emerald-900/60 text-emerald-400 text-xs font-bold px-3 py-1 rounded-full border border-emerald-700/50 uppercase tracking-wider mb-2">
+                    Test Dokončen
+                </span>
+                <h2 class="text-2xl font-black text-slate-100">Výsledky Testu</h2>
+            </div>
+
+            <!-- Percentage Circle -->
+            <div class="w-32 h-32 mx-auto bg-slate-900 border-4 border-blue-500 rounded-full flex flex-col items-center justify-center shadow-lg">
+                <span id="score-percentage" class="text-3xl font-black text-blue-400">0%</span>
+                <span class="text-[10px] font-bold text-slate-500 uppercase">Úspěšnost</span>
+            </div>
+
+            <!-- Stats grid -->
+            <div class="flex justify-center gap-4">
+                <div class="bg-emerald-950/40 border border-emerald-800/50 text-emerald-300 px-4 py-2 rounded-xl flex flex-col min-w-[100px]">
+                    <span id="score-correct" class="text-xl font-bold">0</span>
+                    <span class="text-xs text-slate-400">Správně</span>
+                </div>
+                <div class="bg-rose-950/40 border border-rose-800/50 text-rose-300 px-4 py-2 rounded-xl flex flex-col min-w-[100px]">
+                    <span id="score-wrong" class="text-xl font-bold">0</span>
+                    <span class="text-xs text-slate-400">Špatně / Vynecháno</span>
+                </div>
+            </div>
+
+            <div id="results-actions" class="space-y-3 pt-2">
+                <button onclick="toggleReview()" class="w-full py-2.5 bg-slate-700 hover:bg-slate-600 text-slate-200 font-semibold rounded-lg text-sm transition">
+                    🔍 Prohlédnout test a chyby
+                </button>
+                <button onclick="resetToMenu()" class="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg text-sm transition shadow-lg shadow-blue-600/30">
+                    Zpět do hlavního menu
+                </button>
+            </div>
+
+            <!-- Detailní Přehled Chyb -->
+            <div id="review-container" class="hidden text-left mt-6 border-t border-slate-700 pt-6">
+                <h3 class="text-md font-bold text-slate-200 mb-4">Detailní přehled:</h3>
+                <div id="review-list" class="space-y-4 max-h-80 overflow-y-auto pr-2 mb-6">
+                    <!-- Dynamicky generované výsledky -->
+                </div>
+                <button onclick="resetToMenu()" class="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg text-sm transition">
+                    Zpět do hlavního menu
+                </button>
+            </div>
         </div>
+
     </main>
 
     <!-- Footer -->
@@ -52,77 +162,190 @@
 
     <!-- Logic Script -->
     <script>
-        let quizData = [];
+        let rawQuestions = [];
+        let activeQuestions = [];
         let currentIndex = 0;
-        let score = 0;
+        let userAnswers = {};
 
-        // Načtení dat z externího JSON souboru
+        // Zamíchání pole (Fisher-Yates algorithm)
+        function shuffleArray(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        // Načtení dat z externího JSON
         async function initQuiz() {
             try {
                 const response = await fetch('questions.json');
-                const data = await response.json();
-                
-                // Náhodné promíchání otázek při každém načtení
-                quizData = data.sort(() => Math.random() - 0.5);
-                loadQuestion();
+                if (!response.ok) throw new Error('Chyba při načítání souboru');
+                rawQuestions = await response.json();
             } catch (error) {
-                document.getElementById('question-text').textContent = 'Chyba při načítání databáze. Ujistěte se, že soubor questions.json existuje a je správně naformátován.';
+                document.getElementById('menu-screen').innerHTML = `
+                    <div class="text-red-400 font-medium">
+                        Chyba při načítání databáze. Ujistěte se, že soubor <code>questions.json</code> existuje ve stejné složce.
+                    </div>`;
                 console.error(error);
             }
         }
 
-        function loadQuestion() {
-            if (quizData.length === 0) return;
+        function startQuiz(count) {
+            if (rawQuestions.length === 0) return;
 
-            const current = quizData[currentIndex];
-            document.getElementById('rule-ref').textContent = current.rule;
-            document.getElementById('situation-type').textContent = current.category;
-            document.getElementById('question-text').textContent = current.question;
-            document.getElementById('explanation-card').classList.add('hidden');
+            // Výběr náhodných otázek
+            const shuffled = shuffleArray(rawQuestions);
+            const selected = shuffled.slice(0, Math.min(count, shuffled.length));
+
+            // Zamíchání možností pro každou otázku
+            activeQuestions = selected.map(q => {
+                const originalCorrectText = q.options[q.correctIndex !== undefined ? q.correctIndex : q.correctAnswer?.index || 0];
+                const shuffledOpts = shuffleArray(q.options);
+                return {
+                    ...q,
+                    options: shuffledOpts,
+                    correctIndex: shuffledOpts.indexOf(originalCorrectText),
+                    explanation: q.explanation || q.correctAnswer?.explanation || ''
+                };
+            });
+
+            currentIndex = 0;
+            userAnswers = {};
+
+            // Zobrazení testu
+            document.getElementById('menu-screen').classList.add('hidden');
+            document.getElementById('results-screen').classList.add('hidden');
+            document.getElementById('review-container').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const current = activeQuestions[currentIndex];
+            const total = activeQuestions.length;
+
+            document.getElementById('rule-ref').textContent = current.rule || 'Pravidlo IIHF';
+            document.getElementById('question-counter').innerHTML = `Otázka ${currentIndex + 1} <span class="text-slate-500 text-sm font-normal">/ ${total}</span>`;
+            document.getElementById('total-count').textContent = `/ ${total}`;
+            document.getElementById('total-stats').textContent = total;
+            document.getElementById('answered-count').textContent = Object.keys(userAnswers).length;
             
+            // Progress Bar
+            document.getElementById('progress-bar').style.width = `${((currentIndex + 1) / total) * 100}%`;
+
+            document.getElementById('question-text').textContent = current.question;
+
+            // Render Možností
             const container = document.getElementById('options-container');
             container.innerHTML = '';
 
             current.options.forEach((opt, idx) => {
+                const isSelected = userAnswers[currentIndex] === idx;
                 const btn = document.createElement('button');
-                btn.className = "w-full text-left p-3 rounded-lg border border-slate-700 bg-slate-700/50 hover:bg-slate-700 transition flex items-center justify-between group";
+                btn.className = `w-full text-left p-3.5 rounded-lg border transition flex items-start gap-3 ${
+                    isSelected 
+                        ? 'bg-blue-600/30 border-blue-500 text-blue-200' 
+                        : 'bg-slate-700/40 border-slate-700 hover:bg-slate-700 text-slate-200'
+                }`;
                 btn.onclick = () => selectOption(idx);
-                btn.innerHTML = `<span>${opt}</span>`;
+                btn.innerHTML = `
+                    <span class="text-xs font-bold px-2 py-0.5 rounded ${isSelected ? 'bg-blue-500 text-white' : 'bg-slate-700 text-slate-400'} shrink-0 mt-0.5">
+                        ${String.fromCharCode(65 + idx)}
+                    </span>
+                    <span class="text-sm leading-relaxed">${opt}</span>
+                `;
                 container.appendChild(btn);
             });
 
-            document.getElementById('total').textContent = quizData.length;
-            document.getElementById('score').textContent = score;
+            // Tlačítka navigace
+            document.getElementById('prev-btn').disabled = (currentIndex === 0);
+            
+            if (currentIndex === total - 1) {
+                document.getElementById('next-btn').classList.add('hidden');
+                document.getElementById('submit-btn').classList.remove('hidden');
+            } else {
+                document.getElementById('next-btn').classList.remove('hidden');
+                document.getElementById('submit-btn').classList.add('hidden');
+            }
         }
 
-        function selectOption(selectedIndex) {
-            const current = quizData[currentIndex];
-            const buttons = document.getElementById('options-container').children;
-
-            for (let i = 0; i < buttons.length; i++) {
-                buttons[i].disabled = true;
-                if (i === current.correctIndex) {
-                    buttons[i].classList.add('bg-green-600/30', 'border-green-500', 'text-green-200');
-                } else if (i === selectedIndex) {
-                    buttons[i].classList.add('bg-red-600/30', 'border-red-500', 'text-red-200');
-                }
-            }
-
-            if (selectedIndex === current.correctIndex) {
-                score++;
-                document.getElementById('score').textContent = score;
-            }
-
-            document.getElementById('explanation-text').textContent = current.explanation;
-            document.getElementById('explanation-card').classList.remove('hidden');
-        }
-
-        function nextQuestion() {
-            currentIndex = (currentIndex + 1) % quizData.length;
+        function selectOption(index) {
+            userAnswers[currentIndex] = index;
             loadQuestion();
         }
 
-        // Start aplikace
+        function nextQuestion() {
+            if (currentIndex < activeQuestions.length - 1) {
+                currentIndex++;
+                loadQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                loadQuestion();
+            }
+        }
+
+        function finishQuiz() {
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('results-screen').classList.remove('hidden');
+
+            let correctCount = 0;
+            activeQuestions.forEach((q, idx) => {
+                if (userAnswers[idx] === q.correctIndex) correctCount++;
+            });
+
+            const total = activeQuestions.length;
+            const percentage = Math.round((correctCount / total) * 100);
+
+            document.getElementById('score-percentage').textContent = `${percentage}%`;
+            document.getElementById('score-correct').textContent = correctCount;
+            document.getElementById('score-wrong').textContent = total - correctCount;
+
+            // Vygenerování přehledu
+            const reviewList = document.getElementById('review-list');
+            reviewList.innerHTML = '';
+
+            activeQuestions.forEach((q, idx) => {
+                const isCorrect = userAnswers[idx] === q.correctIndex;
+                const userAnsText = userAnswers[idx] !== undefined ? q.options[userAnswers[idx]] : 'Nezodpovězeno';
+                const correctAnsText = q.options[q.correctIndex];
+
+                const card = document.createElement('div');
+                card.className = `p-4 rounded-lg border text-sm ${
+                    isCorrect ? 'bg-emerald-950/20 border-emerald-800/50' : 'bg-rose-950/20 border-rose-800/50'
+                }`;
+                card.innerHTML = `
+                    <div class="font-semibold text-slate-200 mb-1">${idx + 1}. ${q.question}</div>
+                    <div class="text-xs ${isCorrect ? 'text-emerald-400' : 'text-rose-400'} font-medium">
+                        Vaše odpověď: ${userAnsText}
+                    </div>
+                    ${!isCorrect ? `<div class="text-xs text-emerald-400 font-medium mt-0.5">Správně: ${correctAnsText}</div>` : ''}
+                    ${q.explanation ? `<div class="text-xs text-slate-400 mt-2 italic bg-slate-900/60 p-2 rounded border border-slate-800">💡 ${q.explanation}</div>` : ''}
+                `;
+                reviewList.appendChild(card);
+            });
+        }
+
+        function toggleReview() {
+            const container = document.getElementById('review-container');
+            const actions = document.getElementById('results-actions');
+            container.classList.toggle('hidden');
+            actions.classList.toggle('hidden');
+        }
+
+        function resetToMenu() {
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('results-screen').classList.add('hidden');
+            document.getElementById('menu-screen').classList.remove('hidden');
+        }
+
+        // Inicializace při načtení
         initQuiz();
     </script>
 </body>
