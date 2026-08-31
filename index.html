@@ -125,58 +125,32 @@
         }
 
         function startQuiz(count) {
-            if (!rawData || rawData.length === 0) {
-                alert("Nelze spustit test: Není načten žádný soubor questions.json.");
-                return;
-            }
-
-            <script>
-    let rawData = [];
-    let activeQuestions = [];
-    let currentIndex = 0;
-    let userAnswers = {};
-
-    // BALÍČEK OTÁZEK PRO ZAMEZENÍ OPAKOVÁNÍ MEZI TESTY
-    let drawDeck = [];
-
-    // Funkce pro kompletní zamíchání pole (Fisher-Yates)
-    function shuffleArray(array) {
-        const arr = [...array];
-        for (let i = arr.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [arr[i], arr[j]] = [arr[j], arr[i]];
-        }
-        return arr;
+    if (!rawData || rawData.length === 0) {
+        alert("Není načten žádný soubor questions.json.");
+        return;
     }
 
-    async function loadQuestionsFromJSON() {
-        // ... (tato část zůstává stejná)
+    const selectedIndices = new Set();
+    const maxQuestions = Math.min(count, rawData.length);
+
+    // Náhodně vybíráme indexy ze seznamu, dokud nemáme požadovaný počet unikátních otázek
+    while (selectedIndices.size < maxQuestions) {
+        const randomIndex = Math.floor(Math.random() * rawData.length);
+        selectedIndices.add(randomIndex);
     }
 
-    function startQuiz(count) {
-        if (!rawData || rawData.length === 0) {
-            alert("Není načten žádný soubor questions.json.");
-            return;
-        }
+    // Vytvoříme pole otázek na základě vybraných náhodných indexů
+    activeQuestions = Array.from(selectedIndices).map(index => rawData[index]);
 
-        // Pokud je v balíčku méně otázek, než kolik chceš v testu, znovu zamícháme všech 63
-        if (drawDeck.length < count) {
-            drawDeck = shuffleArray(rawData);
-        }
+    userAnswers = {};
+    currentIndex = 0;
 
-        // Vezmeme požadovaný počet otázek z vrchu balíčku a z balíčku je odstraníme (splice)
-        // Tím je GARANTOVÁNO, že v dalším testu dostaneš úplně jiné otázky!
-        activeQuestions = drawDeck.splice(0, Math.min(count, drawDeck.length));
+    document.getElementById('menu-card').classList.add('hidden');
+    document.getElementById('results-card').classList.add('hidden');
+    document.getElementById('quiz-card').classList.remove('hidden');
 
-        userAnswers = {};
-        currentIndex = 0;
-
-        document.getElementById('menu-card').classList.add('hidden');
-        document.getElementById('results-card').classList.add('hidden');
-        document.getElementById('quiz-card').classList.remove('hidden');
-        
-        loadQuestion();
-    }
+    loadQuestion();
+}
         function loadQuestion() {
             const current = activeQuestions[currentIndex];
             
