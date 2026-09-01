@@ -897,7 +897,7 @@
     "question": "Brankář Týmu A1 obdržel trest do konce utkání. Do branky nastoupil náhradní brankář A2, který se následně zranil a nemůže pokračovat. Smí se brankář A1 vrátit do hry?",
     "options": [
       "Ano",
-      "Ne",
+      "Ne"
     ],
     "correctIndex": 1,
     "explanation": "Ne, brankáři, kterému byl udělen trest do konce utkání již nesmí nastoupit a zasáhnout do tohoto utkání. Tým může převléknout jednoho hráče za brankáře."
