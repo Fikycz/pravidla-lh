@@ -813,5 +813,119 @@
     ],
     "correctIndex": 0,
     "explanation": "Tato situace bude považována jako přehlédnutý faul, který však postřehl čárový rozhodčí."
+  },
+   {
+    "rule": "Situation Book 82.7",
+    "category": "Posunutá brána",
+    "question": "Bránící tým neúmyslně posune vlastní bránu a dojde k přerušení hry. Které z následujících tvrzení je správně?",
+    "options": [
+      "Bránící tým smí střídat",
+      "Bránící tým nesmí střídat, nesmí být vyhlášena komerční přestávka a útočící tým má možnost volby pro vhazování.",
+      "Bránící tým nesmí střídat"
+    ],
+    "correctIndex": 1,
+    "explanation": "Při přerušení z důvodu posunutí brány nesmí tým, který branku vyhodil ze své pozice střídat. Rovněž nesmí být vyhlášena komerční přestávka a útočící tým má možnost volby kde se v určitém pásmu bude vhazovat. Pravidlo 87.2 a 63.8."
+  },
+   {
+    "rule": "Situation Book 56.3",
+    "category": "Menší trest",
+    "question": "Hráči Týmu A právě vypršel trest a opouští trestnou lavici. Ve chvíli, kdy opouští trestnou lavici, je puk vystřelen a projíždí kolem něj. Hráč má jednu brusli na ledě a druhou stále na trestné lavici. Jaký bude postup rozhodčích?",
+    "options": [
+      "Uloží MT za zdržování hry",
+      "Rozhodčí přeruší hru a vhazování provede ve středním pásmu.",
+      "Nejedná se o porušení pravidel",
+      "Udělí MT za Nedovolené bránění"
+    ],
+    "correctIndex": 3,
+    "explanation": "Toto není dovoleno a hráči bude udělen MT za Nedovolené bránění. Pravidlo 56.2."
+  },
+  {
+    "rule": "Pravidlo 40.8",
+    "category": "Povinnosti před zahájením utkání",
+    "question": "Jakou povinnost mají pořadatelé soutěžních utkání ve vztahu k bezpečnosti hráčů a rozhodčích?",
+    "options": [
+      "Mohou poskytnout adekvátní policejní či jinou ochranu, které mohou zvládnout svépomoci bez bezpečnostních složek státu.",
+      "Musí poskytnout adekvátní policejní či jinou ochranu za všech situací.",
+      "Nemusí poskytovat žádnou formu ochrany pro účastníky zápasu.",
+      "Pořadatel nemá povinosti."
+    ],
+    "correctIndex": 1,
+    "explanation": "Pořádající klub má vždy povinnost zajistit adekvátní policejní či jinou bezpečnostní službu při utkání."
+  },
+  {
+    "rule": "Pravidlo 10.6",
+    "category": "Přeměření hole",
+    "question": "Jak bude postupovat rozhodčí, pokud hráč před provedením trestného střílení odmítne předložit svou hůl k přeměření?",
+    "options": [
+      "Hráč obdrží OT, trestné střílení se neprovede",
+      "Hráč obdrží MT, trestné střílení se neprovede",
+      "Hráč neobdrží trest, trestné střílení se neprovede",
+      "Hráč obdrží OT, trestné střílení provede náhradník."
+    ],
+    "correctIndex": 0,
+    "explanation": "Hráči, který odmítne předat svou hůl k přeměření před trestním střílení se udělí Osobní trest a trestné střílení se neprovede. Pravidlo 10.6."
+  },
+  {
+    "rule": "Pravidlo 76.2",
+    "category": "Vhazování",
+    "question": "Kde se provede vhazování, pokud útočící hráč během šarvátky přejedou do útočného pásma za úroveň vnějších vrcholů kruhů pro vhazování?",
+    "options": [
+      "V obranném pásmu útočícího týmu.",
+      "Na bodě v útočném pásmu co nejblíže brance.",
+      "Na libovolném bodě v útočném pásmu, který si tým zvolí.",
+      "Ve středním pásmu."
+    ],
+    "correctIndex": 3,
+    "explanation": "Zda útočící hráč při šarvátce přejede vnější vrchol kruhů pro vhazování, bude následné vhazování provedeno ve středním pásmu. Pravidlo 76.2."
+  },
+  {
+    "rule": "Pravidlo 9.8",
+    "category": "Nebezpečná výstroj",
+    "question": "Jaký je postup hlavního rozhodčího, pokud hráč používá nebezpečnou výstroj?",
+    "options": [
+      "Uloží hráči MT za Nedovolenou výstroj",
+      "Vysloví hráči pouze varování.",
+      "Vykáže hráče z ledu a jeho týmu udělí varování",
+      "Dovolí hráči pokračovat ve hře, pokud si výstroj upraví."
+    ],
+    "correctIndex": 2,
+    "explanation": "Pokud hráč používá nebezpečnou výstroj, rozhodčí tohoto hráče vykáže z ledu a varuje jeho tým. Další hráči, kteří budou přistiženi s nebezpečnou výstrojí budou potrestáni."
+  },
+  {
+    "rule": "Situation Book 5.8",
+    "category": "Náhradní brankář",
+    "question": "Brankář Týmu A1 obdržel trest do konce utkání. Do branky nastoupil náhradní brankář A2, který se následně zranil a nemůže pokračovat. Smí se brankář A1 vrátit do hry?",
+    "options": [
+      "Ano",
+      "Ne",
+    ],
+    "correctIndex": 1,
+    "explanation": "Ne, brankáři, kterému byl udělen trest do konce utkání již nesmí nastoupit a zasáhnout do tohoto utkání. Tým může převléknout jednoho hráče za brankáře."
+  },
+  {
+    "rule": "Pravidlo 81.5",
+    "category": "Zakázané uvolnění",
+    "question": "Jak bude postupovat čárový rozhodčí, pokud při zakázaném uvolnění hráč neprovinivšího se týmu mohl odehrát puk, ale záměrně tak neučinil?",
+    "options": [
+      "Zakázané uvolnění se neodpíská a hra pokračuje",
+      "Zakázané uvolnění se odpíská.",
+      "Hra se přeruší a vhazuje se ve středním pásmu.",
+      "Rozhodčí uloží ML týmu, který odmítl odehrát kotouč."
+    ],
+    "correctIndex": 0,
+    "explanation": "Pokud má hráč neprovinivšího se týmu možnost odehrát kotouč a předejít zakázanému uvolnění, musí tak vždy učinit."
+  },
+  {
+    "rule": "Pravidlo 32.4",
+    "category": "Oznámení hlavnímu rozhodčímu",
+    "question": "Jaký bude postup, pokud čárový rozhodčí před vstřelením gólu zaznamená přestupek za nesportovní chování hráče týmu, který vstřelil gól?",
+    "options": [
+      "Sdělí hlavnímu rozhodčímu to co viděl, pouze na jeho vyžádání.",
+      "Gól bude uznán",
+      "Informuje o přestupku hlavního rozhodčího",
+      "Trest se neuloží."
+    ],
+    "correctIndex": 2,
+    "explanation": "Čárový rozhodčí musí oznámit toto jednání hlavnímu rozhodčímu pokud byl svědkem nesportovního chování."
   }
 ]
